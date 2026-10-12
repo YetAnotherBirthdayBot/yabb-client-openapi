@@ -471,8 +471,13 @@ public class BirthdayApi {
      */
     public ApiResponse<BirthdayResponseDTO> getBirthdayWithHttpInfo(@javax.annotation.Nonnull Long guildId, @javax.annotation.Nonnull Long userId) throws ApiException {
         okhttp3.Call localVarCall = getBirthdayValidateBeforeCall(guildId, userId, null);
-        Type localVarReturnType = new TypeToken<BirthdayResponseDTO>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        try {
+            Type localVarReturnType = new TypeToken<BirthdayResponseDTO>(){}.getType();
+            return localVarApiClient.execute(localVarCall, localVarReturnType);
+        } catch (ApiException e) {
+            e.setErrorObject(localVarApiClient.getJSON().getGson().fromJson(e.getResponseBody(), new TypeToken<io.github.eggy03.yabb.client.models.ErrorResponse>(){}.getType()));
+            throw e;
+        }
     }
 
     /**
@@ -608,8 +613,13 @@ public class BirthdayApi {
      */
     public ApiResponse<List<BirthdayResponseDTO>> getBirthdaysWithHttpInfo(@javax.annotation.Nonnull Long guildId) throws ApiException {
         okhttp3.Call localVarCall = getBirthdaysValidateBeforeCall(guildId, null);
-        Type localVarReturnType = new TypeToken<List<BirthdayResponseDTO>>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        try {
+            Type localVarReturnType = new TypeToken<List<BirthdayResponseDTO>>(){}.getType();
+            return localVarApiClient.execute(localVarCall, localVarReturnType);
+        } catch (ApiException e) {
+            e.setErrorObject(localVarApiClient.getJSON().getGson().fromJson(e.getResponseBody(), new TypeToken<io.github.eggy03.yabb.client.models.ErrorResponse>(){}.getType()));
+            throw e;
+        }
     }
 
     /**
@@ -731,8 +741,13 @@ public class BirthdayApi {
      */
     public ApiResponse<List<BirthdayResponseDTO>> getPendingBirthdaysWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPendingBirthdaysValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<List<BirthdayResponseDTO>>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        try {
+            Type localVarReturnType = new TypeToken<List<BirthdayResponseDTO>>(){}.getType();
+            return localVarApiClient.execute(localVarCall, localVarReturnType);
+        } catch (ApiException e) {
+            e.setErrorObject(localVarApiClient.getJSON().getGson().fromJson(e.getResponseBody(), new TypeToken<io.github.eggy03.yabb.client.models.ErrorResponse>(){}.getType()));
+            throw e;
+        }
     }
 
     /**

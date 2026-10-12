@@ -304,8 +304,13 @@ public class GuildApi {
      */
     public ApiResponse<List<GuildDTO>> getAllGuildsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getAllGuildsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<List<GuildDTO>>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        try {
+            Type localVarReturnType = new TypeToken<List<GuildDTO>>(){}.getType();
+            return localVarApiClient.execute(localVarCall, localVarReturnType);
+        } catch (ApiException e) {
+            e.setErrorObject(localVarApiClient.getJSON().getGson().fromJson(e.getResponseBody(), new TypeToken<io.github.eggy03.yabb.client.models.ErrorResponse>(){}.getType()));
+            throw e;
+        }
     }
 
     /**
@@ -440,8 +445,13 @@ public class GuildApi {
      */
     public ApiResponse<GuildDTO> getGuildWithHttpInfo(@javax.annotation.Nonnull Long guildId) throws ApiException {
         okhttp3.Call localVarCall = getGuildValidateBeforeCall(guildId, null);
-        Type localVarReturnType = new TypeToken<GuildDTO>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        try {
+            Type localVarReturnType = new TypeToken<GuildDTO>(){}.getType();
+            return localVarApiClient.execute(localVarCall, localVarReturnType);
+        } catch (ApiException e) {
+            e.setErrorObject(localVarApiClient.getJSON().getGson().fromJson(e.getResponseBody(), new TypeToken<io.github.eggy03.yabb.client.models.ErrorResponse>(){}.getType()));
+            throw e;
+        }
     }
 
     /**

@@ -28,6 +28,7 @@ public class ApiException extends Exception {
     private int code = 0;
     private Map<String, List<String>> responseHeaders = null;
     private String responseBody = null;
+    private io.github.eggy03.yabb.client.models.ErrorResponse errorObject = null;
 
     /**
      * <p>Constructor for ApiException.</p>
@@ -163,5 +164,23 @@ public class ApiException extends Exception {
     public String getMessage() {
         return String.format(java.util.Locale.ROOT, "Message: %s%nHTTP response code: %s%nHTTP response body: %s%nHTTP response headers: %s",
                 super.getMessage(), this.getCode(), this.getResponseBody(), this.getResponseHeaders());
+    }
+
+    /**
+     * Get the error object.
+     *
+     * @return Error object
+     */
+    public io.github.eggy03.yabb.client.models.ErrorResponse getErrorObject() {
+        return errorObject;
+    }
+
+    /**
+     * Get the error object.
+     *
+     * @param errorObject Error object
+     */
+    public void setErrorObject(io.github.eggy03.yabb.client.models.ErrorResponse errorObject) {
+        this.errorObject = errorObject;
     }
 }

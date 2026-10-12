@@ -1,5 +1,4 @@
 .github/workflows/maven.yml
-.gitignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -17,7 +16,6 @@ gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
 gradlew
 gradlew.bat
-pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/io/github/eggy03/yabb/client/ApiCallback.java
