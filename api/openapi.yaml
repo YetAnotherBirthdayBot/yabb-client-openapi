@@ -1,0 +1,625 @@
+openapi: 3.1.0
+info:
+  title: yabb-api API
+  version: 0.0.1
+servers:
+- url: /
+tags:
+- name: Birthday
+- name: Guild
+paths:
+  /api/v1/birthday:
+    patch:
+      operationId: updateBirthday
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BirthdayRequestDTO"
+        required: true
+      responses:
+        "204":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Validation Errors
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Birthday not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Internal Server Error
+      summary: Update a Birthday
+      tags:
+      - Birthday
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+    post:
+      operationId: saveBirthday
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BirthdayRequestDTO"
+        required: true
+      responses:
+        "201":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Validation Errors
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Constraint Violation Errors
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Internal Server Error
+      summary: Save a Birthday
+      tags:
+      - Birthday
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /api/v1/birthday/pending:
+    get:
+      operationId: getPendingBirthdays
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/BirthdayResponseDTO"
+                type: array
+                default: null
+          description: Success
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Internal Server Error
+      summary: Get Pending Birthday List
+      tags:
+      - Birthday
+      x-accepts:
+      - application/json
+  /api/v1/birthday/update-for-next-year:
+    patch:
+      operationId: updateBirthdayForNextYear
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BirthdayRequestDTO"
+        required: true
+      responses:
+        "204":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Validation Errors
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Birthday not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Internal Server Error
+      summary: Update Birthday for Next Year
+      tags:
+      - Birthday
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /api/v1/birthday/{guildId}:
+    delete:
+      operationId: deleteBirthdays
+      parameters:
+      - explode: false
+        in: path
+        name: guildId
+        required: true
+        schema:
+          exclusiveMinimum: true
+          format: int64
+          minimum: 0
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain: {}
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Validation Errors
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Internal Server Error
+      summary: Delete all Birthdays belonging to a Guild
+      tags:
+      - Birthday
+      x-accepts:
+      - application/json
+      - text/plain
+    get:
+      operationId: getBirthdays
+      parameters:
+      - explode: false
+        in: path
+        name: guildId
+        required: true
+        schema:
+          exclusiveMinimum: true
+          format: int64
+          minimum: 0
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/BirthdayResponseDTO"
+                type: array
+                default: null
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Validation Errors
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Internal Server Error
+      summary: Get Birthdays for a Guild
+      tags:
+      - Birthday
+      x-accepts:
+      - application/json
+  /api/v1/birthday/{guildId}/{userId}:
+    delete:
+      operationId: deleteBirthday
+      parameters:
+      - explode: false
+        in: path
+        name: guildId
+        required: true
+        schema:
+          exclusiveMinimum: true
+          format: int64
+          minimum: 0
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: userId
+        required: true
+        schema:
+          exclusiveMinimum: true
+          format: int64
+          minimum: 0
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Validation Errors
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Birthday not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Internal Server Error
+      summary: Delete a User's Birthday
+      tags:
+      - Birthday
+      x-accepts:
+      - application/json
+    get:
+      operationId: getBirthday
+      parameters:
+      - explode: false
+        in: path
+        name: guildId
+        required: true
+        schema:
+          exclusiveMinimum: true
+          format: int64
+          minimum: 0
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: userId
+        required: true
+        schema:
+          exclusiveMinimum: true
+          format: int64
+          minimum: 0
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BirthdayResponseDTO"
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Validation Errors
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Birthday not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Internal Server Error
+      summary: Get Birthday for a User in a Guild
+      tags:
+      - Birthday
+      x-accepts:
+      - application/json
+  /api/v1/guild:
+    get:
+      operationId: getAllGuilds
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/GuildDTO"
+                type: array
+                default: null
+          description: Success
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Internal Server Error
+      summary: Get All Guilds
+      tags:
+      - Guild
+      x-accepts:
+      - application/json
+    patch:
+      operationId: updateGuild
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GuildDTO"
+        required: true
+      responses:
+        "204":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Validation Errors
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Guild not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Internal Server Error
+      summary: Update a Guild
+      tags:
+      - Guild
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+    post:
+      operationId: saveGuild
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GuildDTO"
+        required: true
+      responses:
+        "201":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Validation Errors
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Constraint Violation Errors
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Internal Server Error
+      summary: Save a Guild
+      tags:
+      - Guild
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /api/v1/guild/{guildId}:
+    delete:
+      operationId: deleteGuild
+      parameters:
+      - explode: false
+        in: path
+        name: guildId
+        required: true
+        schema:
+          exclusiveMinimum: true
+          format: int64
+          minimum: 0
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Validation Errors
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Guild not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Internal Server Error
+      summary: Delete a Guild
+      tags:
+      - Guild
+      x-accepts:
+      - application/json
+    get:
+      operationId: getGuild
+      parameters:
+      - explode: false
+        in: path
+        name: guildId
+        required: true
+        schema:
+          exclusiveMinimum: true
+          format: int64
+          minimum: 0
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GuildDTO"
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Validation Errors
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Guild not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Internal Server Error
+      summary: Get a Guild
+      tags:
+      - Guild
+      x-accepts:
+      - application/json
+components:
+  schemas:
+    BirthdayRequestDTO:
+      example:
+        guildId: 0
+        userId: 0
+        month: 2
+        day: 18
+        zoneId: zoneId
+      properties:
+        guildId:
+          exclusiveMinimum: true
+          format: int64
+          minimum: 0
+          type: integer
+        userId:
+          exclusiveMinimum: true
+          format: int64
+          minimum: 0
+          type: integer
+        month:
+          format: int32
+          maximum: 12
+          minimum: 1
+          type: integer
+        day:
+          format: int32
+          maximum: 31
+          minimum: 1
+          type: integer
+        zoneId:
+          type: string
+      required:
+      - day
+      - guildId
+      - month
+      - userId
+      - zoneId
+    BirthdayResponseDTO:
+      example:
+        guildId: 0
+        userId: 6
+        month: 1
+        day: 5
+        zoneId: zoneId
+        nextBirthdayAt: ""
+      properties:
+        guildId:
+          format: int64
+          type: integer
+        userId:
+          format: int64
+          type: integer
+        month:
+          format: int32
+          type: integer
+        day:
+          format: int32
+          type: integer
+        zoneId:
+          description: IANA time zone ID
+          type: string
+        nextBirthdayAt:
+          allOf:
+          - $ref: "#/components/schemas/Instant"
+          description: Next scheduled birthday notification time in UTC
+      required:
+      - day
+      - guildId
+      - month
+      - nextBirthdayAt
+      - userId
+      - zoneId
+    ErrorResponse:
+      example:
+        status: 0
+        error: error
+        message: message
+        timeStamp: 2000-01-23T04:56:07.000+00:00
+        path: path
+      properties:
+        status:
+          format: int32
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+        timeStamp:
+          format: date-time
+          type: string
+        path:
+          type: string
+    GuildDTO:
+      example:
+        guildId: 0
+        channelId: 0
+        roleId: 0
+      properties:
+        guildId:
+          description: Discord guild/server ID
+          exclusiveMinimum: true
+          format: int64
+          minimum: 0
+          type: integer
+        channelId:
+          description: Discord channel ID where birthday notifications are sent
+          exclusiveMinimum: true
+          format: int64
+          minimum: 0
+          type: integer
+        roleId:
+          description: Discord role ID to ping when birthday notifications are sent
+          exclusiveMinimum: true
+          format: int64
+          minimum: 0
+          type: integer
+      required:
+      - channelId
+      - guildId
+    Instant:
+      format: date-time
+      type: string
+    LocalDateTime:
+      format: date-time
+      type: string
+
