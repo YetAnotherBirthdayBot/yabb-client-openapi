@@ -79,9 +79,9 @@ paths:
       x-content-type: application/json
       x-accepts:
       - application/json
-  /api/v1/birthday/pending:
+  /api/v1/birthday/active:
     get:
-      operationId: getPendingBirthdays
+      operationId: getActiveBirthdays
       responses:
         "200":
           content:
@@ -98,7 +98,55 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
           description: Internal Server Error
-      summary: Get Pending Birthday List
+      summary: Get a list of birthdays overdue by at most 24 hours
+      tags:
+      - Birthday
+      x-accepts:
+      - application/json
+  /api/v1/birthday/expired:
+    get:
+      operationId: getExpiredBirthdays
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/BirthdayResponseDTO"
+                type: array
+                default: null
+          description: Success
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Internal Server Error
+      summary: Get a list of birthdays overdue by more than 24 hours
+      tags:
+      - Birthday
+      x-accepts:
+      - application/json
+  /api/v1/birthday/upcoming:
+    get:
+      operationId: getUpcomingBirthdays
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/BirthdayResponseDTO"
+                type: array
+                default: null
+          description: Success
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Internal Server Error
+      summary: Get a list of birthdays due in the future
       tags:
       - Birthday
       x-accepts:
@@ -502,8 +550,8 @@ components:
       example:
         guildId: 0
         userId: 0
-        month: 2
-        day: 18
+        month: 1
+        day: 5
         zoneId: zoneId
       properties:
         guildId:
@@ -518,13 +566,9 @@ components:
           type: integer
         month:
           format: int32
-          maximum: 12
-          minimum: 1
           type: integer
         day:
           format: int32
-          maximum: 31
-          minimum: 1
           type: integer
         zoneId:
           type: string

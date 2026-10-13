@@ -352,6 +352,132 @@ public class BirthdayApi {
         return localVarCall;
     }
     /**
+     * Build call for getActiveBirthdays
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getActiveBirthdaysCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/birthday/active";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getActiveBirthdaysValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getActiveBirthdaysCall(_callback);
+
+    }
+
+    /**
+     * Get a list of birthdays overdue by at most 24 hours
+     * 
+     * @return List&lt;BirthdayResponseDTO&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<BirthdayResponseDTO> getActiveBirthdays() throws ApiException {
+        ApiResponse<List<BirthdayResponseDTO>> localVarResp = getActiveBirthdaysWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get a list of birthdays overdue by at most 24 hours
+     * 
+     * @return ApiResponse&lt;List&lt;BirthdayResponseDTO&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<BirthdayResponseDTO>> getActiveBirthdaysWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getActiveBirthdaysValidateBeforeCall(null);
+        try {
+            Type localVarReturnType = new TypeToken<List<BirthdayResponseDTO>>(){}.getType();
+            return localVarApiClient.execute(localVarCall, localVarReturnType);
+        } catch (ApiException e) {
+            e.setErrorObject(localVarApiClient.getJSON().getGson().fromJson(e.getResponseBody(), new TypeToken<io.github.eggy03.yabb.client.models.ErrorResponse>(){}.getType()));
+            throw e;
+        }
+    }
+
+    /**
+     * Get a list of birthdays overdue by at most 24 hours (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getActiveBirthdaysAsync(final ApiCallback<List<BirthdayResponseDTO>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getActiveBirthdaysValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<List<BirthdayResponseDTO>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getBirthday
      * @param guildId  (required)
      * @param userId  (required)
@@ -646,7 +772,7 @@ public class BirthdayApi {
         return localVarCall;
     }
     /**
-     * Build call for getPendingBirthdays
+     * Build call for getExpiredBirthdays
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -658,7 +784,7 @@ public class BirthdayApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPendingBirthdaysCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getExpiredBirthdaysCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -675,7 +801,7 @@ public class BirthdayApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/v1/birthday/pending";
+        String localVarPath = "/api/v1/birthday/expired";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -703,13 +829,13 @@ public class BirthdayApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPendingBirthdaysValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getPendingBirthdaysCall(_callback);
+    private okhttp3.Call getExpiredBirthdaysValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getExpiredBirthdaysCall(_callback);
 
     }
 
     /**
-     * Get Pending Birthday List
+     * Get a list of birthdays overdue by more than 24 hours
      * 
      * @return List&lt;BirthdayResponseDTO&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -721,13 +847,13 @@ public class BirthdayApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public List<BirthdayResponseDTO> getPendingBirthdays() throws ApiException {
-        ApiResponse<List<BirthdayResponseDTO>> localVarResp = getPendingBirthdaysWithHttpInfo();
+    public List<BirthdayResponseDTO> getExpiredBirthdays() throws ApiException {
+        ApiResponse<List<BirthdayResponseDTO>> localVarResp = getExpiredBirthdaysWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Get Pending Birthday List
+     * Get a list of birthdays overdue by more than 24 hours
      * 
      * @return ApiResponse&lt;List&lt;BirthdayResponseDTO&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -739,8 +865,8 @@ public class BirthdayApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<BirthdayResponseDTO>> getPendingBirthdaysWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getPendingBirthdaysValidateBeforeCall(null);
+    public ApiResponse<List<BirthdayResponseDTO>> getExpiredBirthdaysWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getExpiredBirthdaysValidateBeforeCall(null);
         try {
             Type localVarReturnType = new TypeToken<List<BirthdayResponseDTO>>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -751,7 +877,7 @@ public class BirthdayApi {
     }
 
     /**
-     * Get Pending Birthday List (asynchronously)
+     * Get a list of birthdays overdue by more than 24 hours (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -764,9 +890,135 @@ public class BirthdayApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPendingBirthdaysAsync(final ApiCallback<List<BirthdayResponseDTO>> _callback) throws ApiException {
+    public okhttp3.Call getExpiredBirthdaysAsync(final ApiCallback<List<BirthdayResponseDTO>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPendingBirthdaysValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getExpiredBirthdaysValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<List<BirthdayResponseDTO>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getUpcomingBirthdays
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getUpcomingBirthdaysCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/birthday/upcoming";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getUpcomingBirthdaysValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getUpcomingBirthdaysCall(_callback);
+
+    }
+
+    /**
+     * Get a list of birthdays due in the future
+     * 
+     * @return List&lt;BirthdayResponseDTO&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<BirthdayResponseDTO> getUpcomingBirthdays() throws ApiException {
+        ApiResponse<List<BirthdayResponseDTO>> localVarResp = getUpcomingBirthdaysWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get a list of birthdays due in the future
+     * 
+     * @return ApiResponse&lt;List&lt;BirthdayResponseDTO&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<BirthdayResponseDTO>> getUpcomingBirthdaysWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getUpcomingBirthdaysValidateBeforeCall(null);
+        try {
+            Type localVarReturnType = new TypeToken<List<BirthdayResponseDTO>>(){}.getType();
+            return localVarApiClient.execute(localVarCall, localVarReturnType);
+        } catch (ApiException e) {
+            e.setErrorObject(localVarApiClient.getJSON().getGson().fromJson(e.getResponseBody(), new TypeToken<io.github.eggy03.yabb.client.models.ErrorResponse>(){}.getType()));
+            throw e;
+        }
+    }
+
+    /**
+     * Get a list of birthdays due in the future (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getUpcomingBirthdaysAsync(final ApiCallback<List<BirthdayResponseDTO>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getUpcomingBirthdaysValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<List<BirthdayResponseDTO>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

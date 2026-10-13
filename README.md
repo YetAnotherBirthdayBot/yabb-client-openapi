@@ -116,9 +116,11 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BirthdayApi* | [**deleteBirthday**](docs/BirthdayApi.md#deleteBirthday) | **DELETE** /api/v1/birthday/{guildId}/{userId} | Delete a User&#39;s Birthday
 *BirthdayApi* | [**deleteBirthdays**](docs/BirthdayApi.md#deleteBirthdays) | **DELETE** /api/v1/birthday/{guildId} | Delete all Birthdays belonging to a Guild
+*BirthdayApi* | [**getActiveBirthdays**](docs/BirthdayApi.md#getActiveBirthdays) | **GET** /api/v1/birthday/active | Get a list of birthdays overdue by at most 24 hours
 *BirthdayApi* | [**getBirthday**](docs/BirthdayApi.md#getBirthday) | **GET** /api/v1/birthday/{guildId}/{userId} | Get Birthday for a User in a Guild
 *BirthdayApi* | [**getBirthdays**](docs/BirthdayApi.md#getBirthdays) | **GET** /api/v1/birthday/{guildId} | Get Birthdays for a Guild
-*BirthdayApi* | [**getPendingBirthdays**](docs/BirthdayApi.md#getPendingBirthdays) | **GET** /api/v1/birthday/pending | Get Pending Birthday List
+*BirthdayApi* | [**getExpiredBirthdays**](docs/BirthdayApi.md#getExpiredBirthdays) | **GET** /api/v1/birthday/expired | Get a list of birthdays overdue by more than 24 hours
+*BirthdayApi* | [**getUpcomingBirthdays**](docs/BirthdayApi.md#getUpcomingBirthdays) | **GET** /api/v1/birthday/upcoming | Get a list of birthdays due in the future
 *BirthdayApi* | [**saveBirthday**](docs/BirthdayApi.md#saveBirthday) | **POST** /api/v1/birthday | Save a Birthday
 *BirthdayApi* | [**updateBirthday**](docs/BirthdayApi.md#updateBirthday) | **PATCH** /api/v1/birthday | Update a Birthday
 *BirthdayApi* | [**updateBirthdayForNextYear**](docs/BirthdayApi.md#updateBirthdayForNextYear) | **PATCH** /api/v1/birthday/update-for-next-year | Update Birthday for Next Year

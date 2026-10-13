@@ -59,6 +59,17 @@ public class BirthdayApiTest {
     }
 
     /**
+     * Get a list of birthdays overdue by at most 24 hours
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getActiveBirthdaysTest() throws ApiException {
+        List<BirthdayResponseDTO> response = api.getActiveBirthdays();
+        // TODO: test validations
+    }
+
+    /**
      * Get Birthday for a User in a Guild
      *
      * @throws ApiException if the Api call fails
@@ -84,13 +95,24 @@ public class BirthdayApiTest {
     }
 
     /**
-     * Get Pending Birthday List
+     * Get a list of birthdays overdue by more than 24 hours
      *
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getPendingBirthdaysTest() throws ApiException {
-        List<BirthdayResponseDTO> response = api.getPendingBirthdays();
+    public void getExpiredBirthdaysTest() throws ApiException {
+        List<BirthdayResponseDTO> response = api.getExpiredBirthdays();
+        // TODO: test validations
+    }
+
+    /**
+     * Get a list of birthdays due in the future
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getUpcomingBirthdaysTest() throws ApiException {
+        List<BirthdayResponseDTO> response = api.getUpcomingBirthdays();
         // TODO: test validations
     }
 

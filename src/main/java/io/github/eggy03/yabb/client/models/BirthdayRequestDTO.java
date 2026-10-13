@@ -126,8 +126,6 @@ public class BirthdayRequestDTO {
 
   /**
    * Get month
-   * minimum: 1
-   * maximum: 12
    * @return month
    */
   @javax.annotation.Nonnull
@@ -147,8 +145,6 @@ public class BirthdayRequestDTO {
 
   /**
    * Get day
-   * minimum: 1
-   * maximum: 31
    * @return day
    */
   @javax.annotation.Nonnull
