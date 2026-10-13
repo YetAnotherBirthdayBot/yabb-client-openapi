@@ -48,131 +48,106 @@ import java.util.Set;
 import io.github.eggy03.yabb.client.JSON;
 
 /**
- * ErrorResponse
+ * Standard API error response
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class ErrorResponse {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private Integer status;
 
   public static final String SERIALIZED_NAME_ERROR = "error";
   @SerializedName(SERIALIZED_NAME_ERROR)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private String error;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private String message;
 
   public static final String SERIALIZED_NAME_TIME_STAMP = "timeStamp";
   @SerializedName(SERIALIZED_NAME_TIME_STAMP)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private OffsetDateTime timeStamp;
 
   public static final String SERIALIZED_NAME_PATH = "path";
   @SerializedName(SERIALIZED_NAME_PATH)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private String path;
 
   public ErrorResponse() {
   }
 
-  public ErrorResponse status(@javax.annotation.Nullable Integer status) {
+  public ErrorResponse(
+     Integer status, 
+     String error, 
+     String message, 
+     OffsetDateTime timeStamp, 
+     String path
+  ) {
+    this();
     this.status = status;
-    return this;
+    this.error = error;
+    this.message = message;
+    this.timeStamp = timeStamp;
+    this.path = path;
   }
 
   /**
    * Get status
    * @return status
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Integer getStatus() {
     return status;
   }
 
-  public void setStatus(@javax.annotation.Nullable Integer status) {
-    this.status = status;
-  }
 
-
-  public ErrorResponse error(@javax.annotation.Nullable String error) {
-    this.error = error;
-    return this;
-  }
 
   /**
    * Get error
    * @return error
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getError() {
     return error;
   }
 
-  public void setError(@javax.annotation.Nullable String error) {
-    this.error = error;
-  }
 
-
-  public ErrorResponse message(@javax.annotation.Nullable String message) {
-    this.message = message;
-    return this;
-  }
 
   /**
    * Get message
    * @return message
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getMessage() {
     return message;
   }
 
-  public void setMessage(@javax.annotation.Nullable String message) {
-    this.message = message;
-  }
 
-
-  public ErrorResponse timeStamp(@javax.annotation.Nullable OffsetDateTime timeStamp) {
-    this.timeStamp = timeStamp;
-    return this;
-  }
 
   /**
    * Get timeStamp
    * @return timeStamp
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public OffsetDateTime getTimeStamp() {
     return timeStamp;
   }
 
-  public void setTimeStamp(@javax.annotation.Nullable OffsetDateTime timeStamp) {
-    this.timeStamp = timeStamp;
-  }
 
-
-  public ErrorResponse path(@javax.annotation.Nullable String path) {
-    this.path = path;
-    return this;
-  }
 
   /**
    * Get path
    * @return path
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getPath() {
     return path;
   }
 
-  public void setPath(@javax.annotation.Nullable String path) {
-    this.path = path;
-  }
 
 
 
@@ -227,7 +202,7 @@ public class ErrorResponse {
     openapiFields = new HashSet<String>(Arrays.asList("status", "error", "message", "timeStamp", "path"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(0);
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("status", "error", "message", "timeStamp", "path"));
   }
 
   /**
@@ -250,14 +225,21 @@ public class ErrorResponse {
           throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `ErrorResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ErrorResponse.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("error") != null && !jsonObj.get("error").isJsonNull()) && !jsonObj.get("error").isJsonPrimitive()) {
+      if (!jsonObj.get("error").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `error` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error").toString()));
       }
-      if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
+      if (!jsonObj.get("message").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
       }
-      if ((jsonObj.get("path") != null && !jsonObj.get("path").isJsonNull()) && !jsonObj.get("path").isJsonPrimitive()) {
+      if (!jsonObj.get("path").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `path` to be a primitive type in the JSON string but got `%s`", jsonObj.get("path").toString()));
       }
   }

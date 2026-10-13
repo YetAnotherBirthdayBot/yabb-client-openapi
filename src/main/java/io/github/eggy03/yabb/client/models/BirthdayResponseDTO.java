@@ -85,9 +85,19 @@ public class BirthdayResponseDTO {
   public BirthdayResponseDTO() {
   }
 
-  public BirthdayResponseDTO guildId(@javax.annotation.Nonnull Long guildId) {
+  public BirthdayResponseDTO(
+     Long guildId, 
+     Long userId, 
+     Integer month, 
+     Integer day, 
+     String zoneId
+  ) {
+    this();
     this.guildId = guildId;
-    return this;
+    this.userId = userId;
+    this.month = month;
+    this.day = day;
+    this.zoneId = zoneId;
   }
 
   /**
@@ -99,15 +109,7 @@ public class BirthdayResponseDTO {
     return guildId;
   }
 
-  public void setGuildId(@javax.annotation.Nonnull Long guildId) {
-    this.guildId = guildId;
-  }
 
-
-  public BirthdayResponseDTO userId(@javax.annotation.Nonnull Long userId) {
-    this.userId = userId;
-    return this;
-  }
 
   /**
    * Get userId
@@ -118,15 +120,7 @@ public class BirthdayResponseDTO {
     return userId;
   }
 
-  public void setUserId(@javax.annotation.Nonnull Long userId) {
-    this.userId = userId;
-  }
 
-
-  public BirthdayResponseDTO month(@javax.annotation.Nonnull Integer month) {
-    this.month = month;
-    return this;
-  }
 
   /**
    * Get month
@@ -137,15 +131,7 @@ public class BirthdayResponseDTO {
     return month;
   }
 
-  public void setMonth(@javax.annotation.Nonnull Integer month) {
-    this.month = month;
-  }
 
-
-  public BirthdayResponseDTO day(@javax.annotation.Nonnull Integer day) {
-    this.day = day;
-    return this;
-  }
 
   /**
    * Get day
@@ -156,15 +142,7 @@ public class BirthdayResponseDTO {
     return day;
   }
 
-  public void setDay(@javax.annotation.Nonnull Integer day) {
-    this.day = day;
-  }
 
-
-  public BirthdayResponseDTO zoneId(@javax.annotation.Nonnull String zoneId) {
-    this.zoneId = zoneId;
-    return this;
-  }
 
   /**
    * IANA time zone ID
@@ -175,9 +153,6 @@ public class BirthdayResponseDTO {
     return zoneId;
   }
 
-  public void setZoneId(@javax.annotation.Nonnull String zoneId) {
-    this.zoneId = zoneId;
-  }
 
 
   public BirthdayResponseDTO nextBirthdayAt(@javax.annotation.Nonnull OffsetDateTime nextBirthdayAt) {

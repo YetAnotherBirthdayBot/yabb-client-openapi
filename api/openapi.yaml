@@ -545,18 +545,23 @@ components:
       properties:
         guildId:
           format: int64
+          readOnly: true
           type: integer
         userId:
           format: int64
+          readOnly: true
           type: integer
         month:
           format: int32
+          readOnly: true
           type: integer
         day:
           format: int32
+          readOnly: true
           type: integer
         zoneId:
           description: IANA time zone ID
+          readOnly: true
           type: string
         nextBirthdayAt:
           allOf:
@@ -570,25 +575,37 @@ components:
       - userId
       - zoneId
     ErrorResponse:
+      description: Standard API error response
       example:
         status: 0
         error: error
         message: message
-        timeStamp: 2000-01-23T04:56:07.000+00:00
+        timeStamp: ""
         path: path
       properties:
         status:
           format: int32
+          readOnly: true
           type: integer
         error:
+          readOnly: true
           type: string
         message:
+          readOnly: true
           type: string
         timeStamp:
-          format: date-time
-          type: string
+          allOf:
+          - $ref: "#/components/schemas/OffsetDateTime"
+          readOnly: true
         path:
+          readOnly: true
           type: string
+      required:
+      - error
+      - message
+      - path
+      - status
+      - timeStamp
     GuildDTO:
       example:
         guildId: 0
@@ -619,7 +636,7 @@ components:
     Instant:
       format: date-time
       type: string
-    LocalDateTime:
+    OffsetDateTime:
       format: date-time
       type: string
 

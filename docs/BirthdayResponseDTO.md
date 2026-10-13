@@ -7,11 +7,11 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**guildId** | **Long** |  |  |
-|**userId** | **Long** |  |  |
-|**month** | **Integer** |  |  |
-|**day** | **Integer** |  |  |
-|**zoneId** | **String** | IANA time zone ID |  |
+|**guildId** | **Long** |  |  [readonly] |
+|**userId** | **Long** |  |  [readonly] |
+|**month** | **Integer** |  |  [readonly] |
+|**day** | **Integer** |  |  [readonly] |
+|**zoneId** | **String** | IANA time zone ID |  [readonly] |
 |**nextBirthdayAt** | **OffsetDateTime** | Next scheduled birthday notification time in UTC |  |
 
 

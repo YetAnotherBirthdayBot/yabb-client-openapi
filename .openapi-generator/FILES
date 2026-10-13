@@ -42,3 +42,9 @@ src/main/java/io/github/eggy03/yabb/client/models/BirthdayRequestDTO.java
 src/main/java/io/github/eggy03/yabb/client/models/BirthdayResponseDTO.java
 src/main/java/io/github/eggy03/yabb/client/models/ErrorResponse.java
 src/main/java/io/github/eggy03/yabb/client/models/GuildDTO.java
+src/test/java/io/github/eggy03/yabb/client/api/BirthdayApiTest.java
+src/test/java/io/github/eggy03/yabb/client/api/GuildApiTest.java
+src/test/java/io/github/eggy03/yabb/client/models/BirthdayRequestDTOTest.java
+src/test/java/io/github/eggy03/yabb/client/models/BirthdayResponseDTOTest.java
+src/test/java/io/github/eggy03/yabb/client/models/ErrorResponseTest.java
+src/test/java/io/github/eggy03/yabb/client/models/GuildDTOTest.java
