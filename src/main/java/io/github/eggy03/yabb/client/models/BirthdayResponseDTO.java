@@ -77,10 +77,10 @@ public class BirthdayResponseDTO {
   @javax.annotation.Nonnull
   private String zoneId;
 
-  public static final String SERIALIZED_NAME_NEXT_BIRTHDAY_AT = "nextBirthdayAt";
-  @SerializedName(SERIALIZED_NAME_NEXT_BIRTHDAY_AT)
+  public static final String SERIALIZED_NAME_UPCOMING_BIRTHDAY = "upcomingBirthday";
+  @SerializedName(SERIALIZED_NAME_UPCOMING_BIRTHDAY)
   @javax.annotation.Nonnull
-  private OffsetDateTime nextBirthdayAt;
+  private OffsetDateTime upcomingBirthday;
 
   public BirthdayResponseDTO() {
   }
@@ -155,22 +155,22 @@ public class BirthdayResponseDTO {
 
 
 
-  public BirthdayResponseDTO nextBirthdayAt(@javax.annotation.Nonnull OffsetDateTime nextBirthdayAt) {
-    this.nextBirthdayAt = nextBirthdayAt;
+  public BirthdayResponseDTO upcomingBirthday(@javax.annotation.Nonnull OffsetDateTime upcomingBirthday) {
+    this.upcomingBirthday = upcomingBirthday;
     return this;
   }
 
   /**
-   * Next scheduled birthday notification time in UTC
-   * @return nextBirthdayAt
+   * Upcoming birth date and time
+   * @return upcomingBirthday
    */
   @javax.annotation.Nonnull
-  public OffsetDateTime getNextBirthdayAt() {
-    return nextBirthdayAt;
+  public OffsetDateTime getUpcomingBirthday() {
+    return upcomingBirthday;
   }
 
-  public void setNextBirthdayAt(@javax.annotation.Nonnull OffsetDateTime nextBirthdayAt) {
-    this.nextBirthdayAt = nextBirthdayAt;
+  public void setUpcomingBirthday(@javax.annotation.Nonnull OffsetDateTime upcomingBirthday) {
+    this.upcomingBirthday = upcomingBirthday;
   }
 
 
@@ -189,12 +189,12 @@ public class BirthdayResponseDTO {
         Objects.equals(this.month, birthdayResponseDTO.month) &&
         Objects.equals(this.day, birthdayResponseDTO.day) &&
         Objects.equals(this.zoneId, birthdayResponseDTO.zoneId) &&
-        Objects.equals(this.nextBirthdayAt, birthdayResponseDTO.nextBirthdayAt);
+        Objects.equals(this.upcomingBirthday, birthdayResponseDTO.upcomingBirthday);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(guildId, userId, month, day, zoneId, nextBirthdayAt);
+    return Objects.hash(guildId, userId, month, day, zoneId, upcomingBirthday);
   }
 
   @Override
@@ -206,7 +206,7 @@ public class BirthdayResponseDTO {
     sb.append("    month: ").append(toIndentedString(month)).append("\n");
     sb.append("    day: ").append(toIndentedString(day)).append("\n");
     sb.append("    zoneId: ").append(toIndentedString(zoneId)).append("\n");
-    sb.append("    nextBirthdayAt: ").append(toIndentedString(nextBirthdayAt)).append("\n");
+    sb.append("    upcomingBirthday: ").append(toIndentedString(upcomingBirthday)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -225,10 +225,10 @@ public class BirthdayResponseDTO {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("guildId", "userId", "month", "day", "zoneId", "nextBirthdayAt"));
+    openapiFields = new HashSet<String>(Arrays.asList("guildId", "userId", "month", "day", "zoneId", "upcomingBirthday"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("guildId", "userId", "month", "day", "zoneId", "nextBirthdayAt"));
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("guildId", "userId", "month", "day", "zoneId", "upcomingBirthday"));
   }
 
   /**

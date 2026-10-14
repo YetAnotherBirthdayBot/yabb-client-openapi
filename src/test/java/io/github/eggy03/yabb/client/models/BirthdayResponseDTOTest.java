@@ -79,11 +79,11 @@ public class BirthdayResponseDTOTest {
     }
 
     /**
-     * Test the property 'nextBirthdayAt'
+     * Test the property 'upcomingBirthday'
      */
     @Test
-    public void nextBirthdayAtTest() {
-        // TODO: test nextBirthdayAt
+    public void upcomingBirthdayTest() {
+        // TODO: test upcomingBirthday
     }
 
 }

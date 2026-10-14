@@ -585,7 +585,7 @@ components:
         month: 1
         day: 5
         zoneId: zoneId
-        nextBirthdayAt: ""
+        upcomingBirthday: ""
       properties:
         guildId:
           format: int64
@@ -607,15 +607,15 @@ components:
           description: IANA time zone ID
           readOnly: true
           type: string
-        nextBirthdayAt:
+        upcomingBirthday:
           allOf:
           - $ref: "#/components/schemas/Instant"
-          description: Next scheduled birthday notification time in UTC
+          description: Upcoming birth date and time
       required:
       - day
       - guildId
       - month
-      - nextBirthdayAt
+      - upcomingBirthday
       - userId
       - zoneId
     ErrorResponse:
