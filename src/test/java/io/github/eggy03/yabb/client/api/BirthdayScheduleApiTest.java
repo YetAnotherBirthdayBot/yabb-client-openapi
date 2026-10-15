@@ -33,20 +33,20 @@ public class BirthdayScheduleApiTest {
     private final BirthdayScheduleApi api = new BirthdayScheduleApi();
 
     /**
-     * Update schedule for next year
+     * Update birthday schedule for next year
      *
      * @throws ApiException if the Api call fails
      */
     @Test
     public void advanceTest() throws ApiException {
-        Long scheduleGuildId = null;
-        Long scheduleUserId = null;
-        api.advance(scheduleGuildId, scheduleUserId);
+        Long guildId = null;
+        Long userId = null;
+        api.advance(guildId, userId);
         // TODO: test validations
     }
 
     /**
-     * Get a list of schedules overdue by at most 24 hours
+     * Get a list of birthday schedules overdue by at most 24 hours
      *
      * @throws ApiException if the Api call fails
      */
@@ -57,7 +57,7 @@ public class BirthdayScheduleApiTest {
     }
 
     /**
-     * Get a list of schedules overdue by more than 24 hours
+     * Get a list of birthday schedules overdue by more than 24 hours
      *
      * @throws ApiException if the Api call fails
      */
@@ -68,7 +68,20 @@ public class BirthdayScheduleApiTest {
     }
 
     /**
-     * Get a list of schedules due in the future
+     * Get birthday schedule for a particular guild and user
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getScheduleTest() throws ApiException {
+        Long guildId = null;
+        Long userId = null;
+        List<BirthdayScheduleDTO> response = api.getSchedule(guildId, userId);
+        // TODO: test validations
+    }
+
+    /**
+     * Get a list of birthday schedules due in the future
      *
      * @throws ApiException if the Api call fails
      */

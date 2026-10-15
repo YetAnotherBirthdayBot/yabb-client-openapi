@@ -120,10 +120,11 @@ Class | Method | HTTP request | Description
 *BirthdayApi* | [**getBirthdays**](docs/BirthdayApi.md#getBirthdays) | **GET** /api/v1/birthday/{guildId} | Get Birthdays for a Guild
 *BirthdayApi* | [**saveBirthday**](docs/BirthdayApi.md#saveBirthday) | **POST** /api/v1/birthday | Save a Birthday
 *BirthdayApi* | [**updateBirthday**](docs/BirthdayApi.md#updateBirthday) | **PATCH** /api/v1/birthday | Update a Birthday
-*BirthdayScheduleApi* | [**advance**](docs/BirthdayScheduleApi.md#advance) | **PATCH** /api/v1/birthday/schedule/advance/{scheduleGuildId}/{scheduleUserId} | Update schedule for next year
-*BirthdayScheduleApi* | [**getActiveSchedules**](docs/BirthdayScheduleApi.md#getActiveSchedules) | **GET** /api/v1/birthday/schedule/active | Get a list of schedules overdue by at most 24 hours
-*BirthdayScheduleApi* | [**getExpiredSchedules**](docs/BirthdayScheduleApi.md#getExpiredSchedules) | **GET** /api/v1/birthday/schedule/expired | Get a list of schedules overdue by more than 24 hours
-*BirthdayScheduleApi* | [**getUpcomingSchedules**](docs/BirthdayScheduleApi.md#getUpcomingSchedules) | **GET** /api/v1/birthday/schedule/upcoming | Get a list of schedules due in the future
+*BirthdayScheduleApi* | [**advance**](docs/BirthdayScheduleApi.md#advance) | **PATCH** /api/v1/birthday/schedule/advance/{guildId}/{userId} | Update birthday schedule for next year
+*BirthdayScheduleApi* | [**getActiveSchedules**](docs/BirthdayScheduleApi.md#getActiveSchedules) | **GET** /api/v1/birthday/schedule/active | Get a list of birthday schedules overdue by at most 24 hours
+*BirthdayScheduleApi* | [**getExpiredSchedules**](docs/BirthdayScheduleApi.md#getExpiredSchedules) | **GET** /api/v1/birthday/schedule/expired | Get a list of birthday schedules overdue by more than 24 hours
+*BirthdayScheduleApi* | [**getSchedule**](docs/BirthdayScheduleApi.md#getSchedule) | **GET** /api/v1/birthday/schedule/{guildId}/{userId} | Get birthday schedule for a particular guild and user
+*BirthdayScheduleApi* | [**getUpcomingSchedules**](docs/BirthdayScheduleApi.md#getUpcomingSchedules) | **GET** /api/v1/birthday/schedule/upcoming | Get a list of birthday schedules due in the future
 *GuildApi* | [**deleteGuild**](docs/GuildApi.md#deleteGuild) | **DELETE** /api/v1/guild/{guildId} | Delete a Guild
 *GuildApi* | [**getAllGuilds**](docs/GuildApi.md#getAllGuilds) | **GET** /api/v1/guild | Get All Guilds
 *GuildApi* | [**getGuild**](docs/GuildApi.md#getGuild) | **GET** /api/v1/guild/{guildId} | Get a Guild

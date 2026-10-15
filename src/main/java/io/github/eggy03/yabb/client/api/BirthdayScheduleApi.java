@@ -75,8 +75,8 @@ public class BirthdayScheduleApi {
 
     /**
      * Build call for advance
-     * @param scheduleGuildId  (required)
-     * @param scheduleUserId  (required)
+     * @param guildId  (required)
+     * @param userId  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -90,7 +90,7 @@ public class BirthdayScheduleApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call advanceCall(@javax.annotation.Nonnull Long scheduleGuildId, @javax.annotation.Nonnull Long scheduleUserId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call advanceCall(@javax.annotation.Nonnull Long guildId, @javax.annotation.Nonnull Long userId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -107,9 +107,9 @@ public class BirthdayScheduleApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/v1/birthday/schedule/advance/{scheduleGuildId}/{scheduleUserId}"
-            .replace("{" + "scheduleGuildId" + "}", localVarApiClient.escapeString(scheduleGuildId.toString()))
-            .replace("{" + "scheduleUserId" + "}", localVarApiClient.escapeString(scheduleUserId.toString()));
+        String localVarPath = "/api/v1/birthday/schedule/advance/{guildId}/{userId}"
+            .replace("{" + "guildId" + "}", localVarApiClient.escapeString(guildId.toString()))
+            .replace("{" + "userId" + "}", localVarApiClient.escapeString(userId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -137,26 +137,26 @@ public class BirthdayScheduleApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call advanceValidateBeforeCall(@javax.annotation.Nonnull Long scheduleGuildId, @javax.annotation.Nonnull Long scheduleUserId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'scheduleGuildId' is set
-        if (scheduleGuildId == null) {
-            throw new ApiException("Missing the required parameter 'scheduleGuildId' when calling advance(Async)");
+    private okhttp3.Call advanceValidateBeforeCall(@javax.annotation.Nonnull Long guildId, @javax.annotation.Nonnull Long userId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'guildId' is set
+        if (guildId == null) {
+            throw new ApiException("Missing the required parameter 'guildId' when calling advance(Async)");
         }
 
-        // verify the required parameter 'scheduleUserId' is set
-        if (scheduleUserId == null) {
-            throw new ApiException("Missing the required parameter 'scheduleUserId' when calling advance(Async)");
+        // verify the required parameter 'userId' is set
+        if (userId == null) {
+            throw new ApiException("Missing the required parameter 'userId' when calling advance(Async)");
         }
 
-        return advanceCall(scheduleGuildId, scheduleUserId, _callback);
+        return advanceCall(guildId, userId, _callback);
 
     }
 
     /**
-     * Update schedule for next year
+     * Update birthday schedule for next year
      * 
-     * @param scheduleGuildId  (required)
-     * @param scheduleUserId  (required)
+     * @param guildId  (required)
+     * @param userId  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -168,15 +168,15 @@ public class BirthdayScheduleApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public void advance(@javax.annotation.Nonnull Long scheduleGuildId, @javax.annotation.Nonnull Long scheduleUserId) throws ApiException {
-        advanceWithHttpInfo(scheduleGuildId, scheduleUserId);
+    public void advance(@javax.annotation.Nonnull Long guildId, @javax.annotation.Nonnull Long userId) throws ApiException {
+        advanceWithHttpInfo(guildId, userId);
     }
 
     /**
-     * Update schedule for next year
+     * Update birthday schedule for next year
      * 
-     * @param scheduleGuildId  (required)
-     * @param scheduleUserId  (required)
+     * @param guildId  (required)
+     * @param userId  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -189,16 +189,16 @@ public class BirthdayScheduleApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> advanceWithHttpInfo(@javax.annotation.Nonnull Long scheduleGuildId, @javax.annotation.Nonnull Long scheduleUserId) throws ApiException {
-        okhttp3.Call localVarCall = advanceValidateBeforeCall(scheduleGuildId, scheduleUserId, null);
+    public ApiResponse<Void> advanceWithHttpInfo(@javax.annotation.Nonnull Long guildId, @javax.annotation.Nonnull Long userId) throws ApiException {
+        okhttp3.Call localVarCall = advanceValidateBeforeCall(guildId, userId, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
-     * Update schedule for next year (asynchronously)
+     * Update birthday schedule for next year (asynchronously)
      * 
-     * @param scheduleGuildId  (required)
-     * @param scheduleUserId  (required)
+     * @param guildId  (required)
+     * @param userId  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -212,9 +212,9 @@ public class BirthdayScheduleApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call advanceAsync(@javax.annotation.Nonnull Long scheduleGuildId, @javax.annotation.Nonnull Long scheduleUserId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call advanceAsync(@javax.annotation.Nonnull Long guildId, @javax.annotation.Nonnull Long userId, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = advanceValidateBeforeCall(scheduleGuildId, scheduleUserId, _callback);
+        okhttp3.Call localVarCall = advanceValidateBeforeCall(guildId, userId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -282,7 +282,7 @@ public class BirthdayScheduleApi {
     }
 
     /**
-     * Get a list of schedules overdue by at most 24 hours
+     * Get a list of birthday schedules overdue by at most 24 hours
      * 
      * @return List&lt;BirthdayScheduleDTO&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -300,7 +300,7 @@ public class BirthdayScheduleApi {
     }
 
     /**
-     * Get a list of schedules overdue by at most 24 hours
+     * Get a list of birthday schedules overdue by at most 24 hours
      * 
      * @return ApiResponse&lt;List&lt;BirthdayScheduleDTO&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -324,7 +324,7 @@ public class BirthdayScheduleApi {
     }
 
     /**
-     * Get a list of schedules overdue by at most 24 hours (asynchronously)
+     * Get a list of birthday schedules overdue by at most 24 hours (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -408,7 +408,7 @@ public class BirthdayScheduleApi {
     }
 
     /**
-     * Get a list of schedules overdue by more than 24 hours
+     * Get a list of birthday schedules overdue by more than 24 hours
      * 
      * @return List&lt;BirthdayScheduleDTO&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -426,7 +426,7 @@ public class BirthdayScheduleApi {
     }
 
     /**
-     * Get a list of schedules overdue by more than 24 hours
+     * Get a list of birthday schedules overdue by more than 24 hours
      * 
      * @return ApiResponse&lt;List&lt;BirthdayScheduleDTO&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -450,7 +450,7 @@ public class BirthdayScheduleApi {
     }
 
     /**
-     * Get a list of schedules overdue by more than 24 hours (asynchronously)
+     * Get a list of birthday schedules overdue by more than 24 hours (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -466,6 +466,152 @@ public class BirthdayScheduleApi {
     public okhttp3.Call getExpiredSchedulesAsync(final ApiCallback<List<BirthdayScheduleDTO>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getExpiredSchedulesValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<List<BirthdayScheduleDTO>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSchedule
+     * @param guildId  (required)
+     * @param userId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getScheduleCall(@javax.annotation.Nonnull Long guildId, @javax.annotation.Nonnull Long userId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/birthday/schedule/{guildId}/{userId}"
+            .replace("{" + "guildId" + "}", localVarApiClient.escapeString(guildId.toString()))
+            .replace("{" + "userId" + "}", localVarApiClient.escapeString(userId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getScheduleValidateBeforeCall(@javax.annotation.Nonnull Long guildId, @javax.annotation.Nonnull Long userId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'guildId' is set
+        if (guildId == null) {
+            throw new ApiException("Missing the required parameter 'guildId' when calling getSchedule(Async)");
+        }
+
+        // verify the required parameter 'userId' is set
+        if (userId == null) {
+            throw new ApiException("Missing the required parameter 'userId' when calling getSchedule(Async)");
+        }
+
+        return getScheduleCall(guildId, userId, _callback);
+
+    }
+
+    /**
+     * Get birthday schedule for a particular guild and user
+     * 
+     * @param guildId  (required)
+     * @param userId  (required)
+     * @return List&lt;BirthdayScheduleDTO&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<BirthdayScheduleDTO> getSchedule(@javax.annotation.Nonnull Long guildId, @javax.annotation.Nonnull Long userId) throws ApiException {
+        ApiResponse<List<BirthdayScheduleDTO>> localVarResp = getScheduleWithHttpInfo(guildId, userId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get birthday schedule for a particular guild and user
+     * 
+     * @param guildId  (required)
+     * @param userId  (required)
+     * @return ApiResponse&lt;List&lt;BirthdayScheduleDTO&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<BirthdayScheduleDTO>> getScheduleWithHttpInfo(@javax.annotation.Nonnull Long guildId, @javax.annotation.Nonnull Long userId) throws ApiException {
+        okhttp3.Call localVarCall = getScheduleValidateBeforeCall(guildId, userId, null);
+        try {
+            Type localVarReturnType = new TypeToken<List<BirthdayScheduleDTO>>(){}.getType();
+            return localVarApiClient.execute(localVarCall, localVarReturnType);
+        } catch (ApiException e) {
+            e.setErrorObject(localVarApiClient.getJSON().getGson().fromJson(e.getResponseBody(), new TypeToken<io.github.eggy03.yabb.client.models.ErrorResponse>(){}.getType()));
+            throw e;
+        }
+    }
+
+    /**
+     * Get birthday schedule for a particular guild and user (asynchronously)
+     * 
+     * @param guildId  (required)
+     * @param userId  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getScheduleAsync(@javax.annotation.Nonnull Long guildId, @javax.annotation.Nonnull Long userId, final ApiCallback<List<BirthdayScheduleDTO>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getScheduleValidateBeforeCall(guildId, userId, _callback);
         Type localVarReturnType = new TypeToken<List<BirthdayScheduleDTO>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -534,7 +680,7 @@ public class BirthdayScheduleApi {
     }
 
     /**
-     * Get a list of schedules due in the future
+     * Get a list of birthday schedules due in the future
      * 
      * @return List&lt;BirthdayScheduleDTO&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -552,7 +698,7 @@ public class BirthdayScheduleApi {
     }
 
     /**
-     * Get a list of schedules due in the future
+     * Get a list of birthday schedules due in the future
      * 
      * @return ApiResponse&lt;List&lt;BirthdayScheduleDTO&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -576,7 +722,7 @@ public class BirthdayScheduleApi {
     }
 
     /**
-     * Get a list of schedules due in the future (asynchronously)
+     * Get a list of birthday schedules due in the future (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
