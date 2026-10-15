@@ -6,14 +6,10 @@ All URIs are relative to *http://localhost*
 |------------- | ------------- | -------------|
 | [**deleteBirthday**](BirthdayApi.md#deleteBirthday) | **DELETE** /api/v1/birthday/{guildId}/{userId} | Delete a User&#39;s Birthday |
 | [**deleteBirthdays**](BirthdayApi.md#deleteBirthdays) | **DELETE** /api/v1/birthday/{guildId} | Delete all Birthdays belonging to a Guild |
-| [**getActiveBirthdays**](BirthdayApi.md#getActiveBirthdays) | **GET** /api/v1/birthday/active | Get a list of birthdays overdue by at most 24 hours |
 | [**getBirthday**](BirthdayApi.md#getBirthday) | **GET** /api/v1/birthday/{guildId}/{userId} | Get Birthday for a User in a Guild |
 | [**getBirthdays**](BirthdayApi.md#getBirthdays) | **GET** /api/v1/birthday/{guildId} | Get Birthdays for a Guild |
-| [**getExpiredBirthdays**](BirthdayApi.md#getExpiredBirthdays) | **GET** /api/v1/birthday/expired | Get a list of birthdays overdue by more than 24 hours |
-| [**getUpcomingBirthdays**](BirthdayApi.md#getUpcomingBirthdays) | **GET** /api/v1/birthday/upcoming | Get a list of birthdays due in the future |
 | [**saveBirthday**](BirthdayApi.md#saveBirthday) | **POST** /api/v1/birthday | Save a Birthday |
 | [**updateBirthday**](BirthdayApi.md#updateBirthday) | **PATCH** /api/v1/birthday | Update a Birthday |
-| [**updateBirthdayForNextYear**](BirthdayApi.md#updateBirthdayForNextYear) | **PATCH** /api/v1/birthday/update-for-next-year | Update Birthday for Next Year |
 
 
 <a id="deleteBirthday"></a>
@@ -141,66 +137,9 @@ No authorization required
 | **400** | Validation Errors |  -  |
 | **500** | Internal Server Error |  -  |
 
-<a id="getActiveBirthdays"></a>
-# **getActiveBirthdays**
-> List&lt;BirthdayResponseDTO&gt; getActiveBirthdays()
-
-Get a list of birthdays overdue by at most 24 hours
-
-### Example
-```java
-// Import classes:
-import io.github.eggy03.yabb.client.ApiClient;
-import io.github.eggy03.yabb.client.ApiException;
-import io.github.eggy03.yabb.client.Configuration;
-import io.github.eggy03.yabb.client.models.*;
-import io.github.eggy03.yabb.client.api.BirthdayApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
-
-    BirthdayApi apiInstance = new BirthdayApi(defaultClient);
-    try {
-      List<BirthdayResponseDTO> result = apiInstance.getActiveBirthdays();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling BirthdayApi#getActiveBirthdays");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**List&lt;BirthdayResponseDTO&gt;**](BirthdayResponseDTO.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **500** | Internal Server Error |  -  |
-
 <a id="getBirthday"></a>
 # **getBirthday**
-> BirthdayResponseDTO getBirthday(guildId, userId)
+> BirthdayDTO getBirthday(guildId, userId)
 
 Get Birthday for a User in a Guild
 
@@ -222,7 +161,7 @@ public class Example {
     Long guildId = 56L; // Long | 
     Long userId = 56L; // Long | 
     try {
-      BirthdayResponseDTO result = apiInstance.getBirthday(guildId, userId);
+      BirthdayDTO result = apiInstance.getBirthday(guildId, userId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BirthdayApi#getBirthday");
@@ -244,7 +183,7 @@ public class Example {
 
 ### Return type
 
-[**BirthdayResponseDTO**](BirthdayResponseDTO.md)
+[**BirthdayDTO**](BirthdayDTO.md)
 
 ### Authorization
 
@@ -260,12 +199,12 @@ No authorization required
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
 | **400** | Validation Errors |  -  |
-| **404** | Birthday not found |  -  |
+| **404** | Birthday or BirthdaySchedule not found |  -  |
 | **500** | Internal Server Error |  -  |
 
 <a id="getBirthdays"></a>
 # **getBirthdays**
-> List&lt;BirthdayResponseDTO&gt; getBirthdays(guildId)
+> List&lt;BirthdayDTO&gt; getBirthdays(guildId)
 
 Get Birthdays for a Guild
 
@@ -286,7 +225,7 @@ public class Example {
     BirthdayApi apiInstance = new BirthdayApi(defaultClient);
     Long guildId = 56L; // Long | 
     try {
-      List<BirthdayResponseDTO> result = apiInstance.getBirthdays(guildId);
+      List<BirthdayDTO> result = apiInstance.getBirthdays(guildId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BirthdayApi#getBirthdays");
@@ -307,7 +246,7 @@ public class Example {
 
 ### Return type
 
-[**List&lt;BirthdayResponseDTO&gt;**](BirthdayResponseDTO.md)
+[**List&lt;BirthdayDTO&gt;**](BirthdayDTO.md)
 
 ### Authorization
 
@@ -325,123 +264,9 @@ No authorization required
 | **400** | Validation Errors |  -  |
 | **500** | Internal Server Error |  -  |
 
-<a id="getExpiredBirthdays"></a>
-# **getExpiredBirthdays**
-> List&lt;BirthdayResponseDTO&gt; getExpiredBirthdays()
-
-Get a list of birthdays overdue by more than 24 hours
-
-### Example
-```java
-// Import classes:
-import io.github.eggy03.yabb.client.ApiClient;
-import io.github.eggy03.yabb.client.ApiException;
-import io.github.eggy03.yabb.client.Configuration;
-import io.github.eggy03.yabb.client.models.*;
-import io.github.eggy03.yabb.client.api.BirthdayApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
-
-    BirthdayApi apiInstance = new BirthdayApi(defaultClient);
-    try {
-      List<BirthdayResponseDTO> result = apiInstance.getExpiredBirthdays();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling BirthdayApi#getExpiredBirthdays");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**List&lt;BirthdayResponseDTO&gt;**](BirthdayResponseDTO.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **500** | Internal Server Error |  -  |
-
-<a id="getUpcomingBirthdays"></a>
-# **getUpcomingBirthdays**
-> List&lt;BirthdayResponseDTO&gt; getUpcomingBirthdays()
-
-Get a list of birthdays due in the future
-
-### Example
-```java
-// Import classes:
-import io.github.eggy03.yabb.client.ApiClient;
-import io.github.eggy03.yabb.client.ApiException;
-import io.github.eggy03.yabb.client.Configuration;
-import io.github.eggy03.yabb.client.models.*;
-import io.github.eggy03.yabb.client.api.BirthdayApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
-
-    BirthdayApi apiInstance = new BirthdayApi(defaultClient);
-    try {
-      List<BirthdayResponseDTO> result = apiInstance.getUpcomingBirthdays();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling BirthdayApi#getUpcomingBirthdays");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**List&lt;BirthdayResponseDTO&gt;**](BirthdayResponseDTO.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **500** | Internal Server Error |  -  |
-
 <a id="saveBirthday"></a>
 # **saveBirthday**
-> saveBirthday(birthdayRequestDTO)
+> saveBirthday(birthdayDTO)
 
 Save a Birthday
 
@@ -460,9 +285,9 @@ public class Example {
     defaultClient.setBasePath("http://localhost");
 
     BirthdayApi apiInstance = new BirthdayApi(defaultClient);
-    BirthdayRequestDTO birthdayRequestDTO = new BirthdayRequestDTO(); // BirthdayRequestDTO | 
+    BirthdayDTO birthdayDTO = new BirthdayDTO(); // BirthdayDTO | 
     try {
-      apiInstance.saveBirthday(birthdayRequestDTO);
+      apiInstance.saveBirthday(birthdayDTO);
     } catch (ApiException e) {
       System.err.println("Exception when calling BirthdayApi#saveBirthday");
       System.err.println("Status code: " + e.getCode());
@@ -478,7 +303,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **birthdayRequestDTO** | [**BirthdayRequestDTO**](BirthdayRequestDTO.md)|  | |
+| **birthdayDTO** | [**BirthdayDTO**](BirthdayDTO.md)|  | |
 
 ### Return type
 
@@ -503,7 +328,7 @@ No authorization required
 
 <a id="updateBirthday"></a>
 # **updateBirthday**
-> updateBirthday(birthdayRequestDTO)
+> updateBirthday(birthdayDTO)
 
 Update a Birthday
 
@@ -522,9 +347,9 @@ public class Example {
     defaultClient.setBasePath("http://localhost");
 
     BirthdayApi apiInstance = new BirthdayApi(defaultClient);
-    BirthdayRequestDTO birthdayRequestDTO = new BirthdayRequestDTO(); // BirthdayRequestDTO | 
+    BirthdayDTO birthdayDTO = new BirthdayDTO(); // BirthdayDTO | 
     try {
-      apiInstance.updateBirthday(birthdayRequestDTO);
+      apiInstance.updateBirthday(birthdayDTO);
     } catch (ApiException e) {
       System.err.println("Exception when calling BirthdayApi#updateBirthday");
       System.err.println("Status code: " + e.getCode());
@@ -540,7 +365,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **birthdayRequestDTO** | [**BirthdayRequestDTO**](BirthdayRequestDTO.md)|  | |
+| **birthdayDTO** | [**BirthdayDTO**](BirthdayDTO.md)|  | |
 
 ### Return type
 
@@ -560,68 +385,6 @@ No authorization required
 |-------------|-------------|------------------|
 | **204** | Success |  -  |
 | **400** | Validation Errors |  -  |
-| **404** | Birthday not found |  -  |
-| **500** | Internal Server Error |  -  |
-
-<a id="updateBirthdayForNextYear"></a>
-# **updateBirthdayForNextYear**
-> updateBirthdayForNextYear(birthdayRequestDTO)
-
-Update Birthday for Next Year
-
-### Example
-```java
-// Import classes:
-import io.github.eggy03.yabb.client.ApiClient;
-import io.github.eggy03.yabb.client.ApiException;
-import io.github.eggy03.yabb.client.Configuration;
-import io.github.eggy03.yabb.client.models.*;
-import io.github.eggy03.yabb.client.api.BirthdayApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
-
-    BirthdayApi apiInstance = new BirthdayApi(defaultClient);
-    BirthdayRequestDTO birthdayRequestDTO = new BirthdayRequestDTO(); // BirthdayRequestDTO | 
-    try {
-      apiInstance.updateBirthdayForNextYear(birthdayRequestDTO);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling BirthdayApi#updateBirthdayForNextYear");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **birthdayRequestDTO** | [**BirthdayRequestDTO**](BirthdayRequestDTO.md)|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | Success |  -  |
-| **400** | Validation Errors |  -  |
-| **404** | Birthday not found |  -  |
+| **404** | Birthday or BirthdaySchedule not found |  -  |
 | **500** | Internal Server Error |  -  |
 

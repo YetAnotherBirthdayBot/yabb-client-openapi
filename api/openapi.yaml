@@ -1,11 +1,12 @@
 openapi: 3.1.0
 info:
   title: yabb-api API
-  version: 0.0.1
+  version: 1.0.0-SNAPSHOT
 servers:
 - url: /
 tags:
 - name: Birthday
+- name: Birthday Schedule
 - name: Guild
 paths:
   /api/v1/birthday:
@@ -15,7 +16,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/BirthdayRequestDTO"
+              $ref: "#/components/schemas/BirthdayDTO"
         required: true
       responses:
         "204":
@@ -31,7 +32,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-          description: Birthday not found
+          description: Birthday or BirthdaySchedule not found
         "500":
           content:
             application/json:
@@ -50,7 +51,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/BirthdayRequestDTO"
+              $ref: "#/components/schemas/BirthdayDTO"
         required: true
       responses:
         "201":
@@ -79,16 +80,16 @@ paths:
       x-content-type: application/json
       x-accepts:
       - application/json
-  /api/v1/birthday/active:
+  /api/v1/birthday/schedule/active:
     get:
-      operationId: getActiveBirthdays
+      operationId: getActiveSchedules
       responses:
         "200":
           content:
             application/json:
               schema:
                 items:
-                  $ref: "#/components/schemas/BirthdayResponseDTO"
+                  $ref: "#/components/schemas/BirthdayScheduleDTO"
                 type: array
                 default: null
           description: Success
@@ -98,67 +99,19 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
           description: Internal Server Error
-      summary: Get a list of birthdays overdue by at most 24 hours
+      summary: Get a list of schedules overdue by at most 24 hours
       tags:
-      - Birthday
+      - Birthday Schedule
       x-accepts:
       - application/json
-  /api/v1/birthday/expired:
-    get:
-      operationId: getExpiredBirthdays
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: "#/components/schemas/BirthdayResponseDTO"
-                type: array
-                default: null
-          description: Success
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
-          description: Internal Server Error
-      summary: Get a list of birthdays overdue by more than 24 hours
-      tags:
-      - Birthday
-      x-accepts:
-      - application/json
-  /api/v1/birthday/upcoming:
-    get:
-      operationId: getUpcomingBirthdays
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: "#/components/schemas/BirthdayResponseDTO"
-                type: array
-                default: null
-          description: Success
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
-          description: Internal Server Error
-      summary: Get a list of birthdays due in the future
-      tags:
-      - Birthday
-      x-accepts:
-      - application/json
-  /api/v1/birthday/update-for-next-year:
+  /api/v1/birthday/schedule/advance:
     patch:
-      operationId: updateBirthdayForNextYear
+      operationId: advance
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/BirthdayRequestDTO"
+              $ref: "#/components/schemas/BirthdayDTO"
         required: true
       responses:
         "204":
@@ -174,17 +127,65 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-          description: Birthday not found
+          description: Schedule not found
         "500":
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
           description: Internal Server Error
-      summary: Update Birthday for Next Year
+      summary: Update schedule for next year
       tags:
-      - Birthday
+      - Birthday Schedule
       x-content-type: application/json
+      x-accepts:
+      - application/json
+  /api/v1/birthday/schedule/expired:
+    get:
+      operationId: getExpiredSchedules
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/BirthdayScheduleDTO"
+                type: array
+                default: null
+          description: Success
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Internal Server Error
+      summary: Get a list of schedules overdue by more than 24 hours
+      tags:
+      - Birthday Schedule
+      x-accepts:
+      - application/json
+  /api/v1/birthday/schedule/upcoming:
+    get:
+      operationId: getUpcomingSchedules
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/BirthdayScheduleDTO"
+                type: array
+                default: null
+          description: Success
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Internal Server Error
+      summary: Get a list of schedules due in the future
+      tags:
+      - Birthday Schedule
       x-accepts:
       - application/json
   /api/v1/birthday/{guildId}:
@@ -243,7 +244,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: "#/components/schemas/BirthdayResponseDTO"
+                  $ref: "#/components/schemas/BirthdayDTO"
                 type: array
                 default: null
           description: Success
@@ -342,7 +343,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BirthdayResponseDTO"
+                $ref: "#/components/schemas/BirthdayDTO"
           description: Success
         "400":
           content:
@@ -355,7 +356,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-          description: Birthday not found
+          description: Birthday or BirthdaySchedule not found
         "500":
           content:
             application/json:
@@ -546,7 +547,7 @@ paths:
       - application/json
 components:
   schemas:
-    BirthdayRequestDTO:
+    BirthdayDTO:
       example:
         guildId: 0
         userId: 0
@@ -555,22 +556,27 @@ components:
         zoneId: zoneId
       properties:
         guildId:
+          description: The guild ID of the birthday person
           exclusiveMinimum: true
           format: int64
           minimum: 0
           type: integer
         userId:
+          description: The user ID of the birthday person
           exclusiveMinimum: true
           format: int64
           minimum: 0
           type: integer
         month:
+          description: The birth month
           format: int32
           type: integer
         day:
+          description: The birth day
           format: int32
           type: integer
         zoneId:
+          description: The GMT/UTC/UT or Region based Zone ID pf the birthday person
           type: string
       required:
       - day
@@ -578,46 +584,32 @@ components:
       - month
       - userId
       - zoneId
-    BirthdayResponseDTO:
+    BirthdayScheduleDTO:
       example:
         guildId: 0
-        userId: 6
-        month: 1
-        day: 5
-        zoneId: zoneId
-        upcomingBirthday: ""
+        userId: 0
+        upcomingBirthdayAt: ""
       properties:
         guildId:
+          description: The guild ID of the birthday person
+          exclusiveMinimum: true
           format: int64
-          readOnly: true
+          minimum: 0
           type: integer
         userId:
+          description: The user ID of the birthday person
+          exclusiveMinimum: true
           format: int64
-          readOnly: true
+          minimum: 0
           type: integer
-        month:
-          format: int32
-          readOnly: true
-          type: integer
-        day:
-          format: int32
-          readOnly: true
-          type: integer
-        zoneId:
-          description: IANA time zone ID
-          readOnly: true
-          type: string
-        upcomingBirthday:
+        upcomingBirthdayAt:
           allOf:
           - $ref: "#/components/schemas/Instant"
-          description: Upcoming birth date and time
+          description: Upcoming birth date and time of the birthday person
       required:
-      - day
       - guildId
-      - month
-      - upcomingBirthday
+      - upcomingBirthdayAt
       - userId
-      - zoneId
     ErrorResponse:
       description: Standard API error response
       example:
