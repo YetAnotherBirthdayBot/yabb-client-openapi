@@ -1,9 +1,6 @@
 .github/workflows/maven.yml
-.travis.yml
 README.md
 api/openapi.yaml
-build.gradle
-build.sbt
 docs/BirthdayApi.md
 docs/BirthdayDTO.md
 docs/BirthdayScheduleApi.md
@@ -11,13 +8,6 @@ docs/BirthdayScheduleDTO.md
 docs/ErrorResponse.md
 docs/GuildApi.md
 docs/GuildDTO.md
-git_push.sh
-gradle.properties
-gradle/wrapper/gradle-wrapper.jar
-gradle/wrapper/gradle-wrapper.properties
-gradlew
-gradlew.bat
-settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/io/github/eggy03/yabb/client/ApiCallback.java
 src/main/java/io/github/eggy03/yabb/client/ApiClient.java

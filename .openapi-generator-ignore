@@ -23,5 +23,16 @@
 #!docs/README.md
 
 pom.xml
-/.github
+.github
 .gitignore
+
+
+build.gradle
+build.sbt
+/gradle/**
+gradlew
+gradlew.bat
+gradle.properties
+settings.gradle
+.travis.yml
+git_push.sh
