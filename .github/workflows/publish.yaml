@@ -28,6 +28,9 @@ jobs:
           maven-version: 3.9.16
 
       - name: Publish package
-        run: mvn --batch-mode deploy
         env:
+          MAVEN_GPG_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          MAVEN_GPG_KEY_FINGERPRINT: ${{ secrets.GPG_KEY_ID }}
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: mvn -Psign-artifacts clean deploy
