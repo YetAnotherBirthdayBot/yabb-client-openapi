@@ -14,7 +14,6 @@
 package io.github.eggy03.yabb.client.api;
 
 import io.github.eggy03.yabb.client.ApiException;
-import io.github.eggy03.yabb.client.models.BirthdayDTO;
 import io.github.eggy03.yabb.client.models.BirthdayScheduleDTO;
 import io.github.eggy03.yabb.client.models.ErrorResponse;
 import org.junit.jupiter.api.Disabled;
@@ -42,8 +41,7 @@ public class BirthdayScheduleApiTest {
     public void advanceTest() throws ApiException {
         Long scheduleGuildId = null;
         Long scheduleUserId = null;
-        BirthdayDTO birthdayDTO = null;
-        api.advance(scheduleGuildId, scheduleUserId, birthdayDTO);
+        api.advance(scheduleGuildId, scheduleUserId);
         // TODO: test validations
     }
 

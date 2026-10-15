@@ -128,12 +128,6 @@ paths:
           minimum: 0
           type: integer
         style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/BirthdayDTO"
-        required: true
       responses:
         "204":
           description: Success
@@ -158,7 +152,6 @@ paths:
       summary: Update schedule for next year
       tags:
       - Birthday Schedule
-      x-content-type: application/json
       x-accepts:
       - application/json
   /api/v1/birthday/schedule/expired:

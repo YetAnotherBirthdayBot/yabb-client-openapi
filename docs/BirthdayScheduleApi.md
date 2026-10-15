@@ -12,7 +12,7 @@ All URIs are relative to *http://localhost*
 
 <a id="advance"></a>
 # **advance**
-> advance(scheduleGuildId, scheduleUserId, birthdayDTO)
+> advance(scheduleGuildId, scheduleUserId)
 
 Update schedule for next year
 
@@ -33,9 +33,8 @@ public class Example {
     BirthdayScheduleApi apiInstance = new BirthdayScheduleApi(defaultClient);
     Long scheduleGuildId = 56L; // Long | 
     Long scheduleUserId = 56L; // Long | 
-    BirthdayDTO birthdayDTO = new BirthdayDTO(); // BirthdayDTO | 
     try {
-      apiInstance.advance(scheduleGuildId, scheduleUserId, birthdayDTO);
+      apiInstance.advance(scheduleGuildId, scheduleUserId);
     } catch (ApiException e) {
       System.err.println("Exception when calling BirthdayScheduleApi#advance");
       System.err.println("Status code: " + e.getCode());
@@ -53,7 +52,6 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **scheduleGuildId** | **Long**|  | |
 | **scheduleUserId** | **Long**|  | |
-| **birthdayDTO** | [**BirthdayDTO**](BirthdayDTO.md)|  | |
 
 ### Return type
 
@@ -65,7 +63,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
