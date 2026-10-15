@@ -76,7 +76,7 @@ public class BirthdayScheduleApiTest {
     public void getScheduleTest() throws ApiException {
         Long guildId = null;
         Long userId = null;
-        List<BirthdayScheduleDTO> response = api.getSchedule(guildId, userId);
+        BirthdayScheduleDTO response = api.getSchedule(guildId, userId);
         // TODO: test validations
     }
 

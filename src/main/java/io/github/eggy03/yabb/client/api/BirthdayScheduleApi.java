@@ -552,7 +552,7 @@ public class BirthdayScheduleApi {
      * 
      * @param guildId  (required)
      * @param userId  (required)
-     * @return List&lt;BirthdayScheduleDTO&gt;
+     * @return BirthdayScheduleDTO
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -562,8 +562,8 @@ public class BirthdayScheduleApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public List<BirthdayScheduleDTO> getSchedule(@javax.annotation.Nonnull Long guildId, @javax.annotation.Nonnull Long userId) throws ApiException {
-        ApiResponse<List<BirthdayScheduleDTO>> localVarResp = getScheduleWithHttpInfo(guildId, userId);
+    public BirthdayScheduleDTO getSchedule(@javax.annotation.Nonnull Long guildId, @javax.annotation.Nonnull Long userId) throws ApiException {
+        ApiResponse<BirthdayScheduleDTO> localVarResp = getScheduleWithHttpInfo(guildId, userId);
         return localVarResp.getData();
     }
 
@@ -572,7 +572,7 @@ public class BirthdayScheduleApi {
      * 
      * @param guildId  (required)
      * @param userId  (required)
-     * @return ApiResponse&lt;List&lt;BirthdayScheduleDTO&gt;&gt;
+     * @return ApiResponse&lt;BirthdayScheduleDTO&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -582,10 +582,10 @@ public class BirthdayScheduleApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<BirthdayScheduleDTO>> getScheduleWithHttpInfo(@javax.annotation.Nonnull Long guildId, @javax.annotation.Nonnull Long userId) throws ApiException {
+    public ApiResponse<BirthdayScheduleDTO> getScheduleWithHttpInfo(@javax.annotation.Nonnull Long guildId, @javax.annotation.Nonnull Long userId) throws ApiException {
         okhttp3.Call localVarCall = getScheduleValidateBeforeCall(guildId, userId, null);
         try {
-            Type localVarReturnType = new TypeToken<List<BirthdayScheduleDTO>>(){}.getType();
+            Type localVarReturnType = new TypeToken<BirthdayScheduleDTO>(){}.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
         } catch (ApiException e) {
             e.setErrorObject(localVarApiClient.getJSON().getGson().fromJson(e.getResponseBody(), new TypeToken<io.github.eggy03.yabb.client.models.ErrorResponse>(){}.getType()));
@@ -609,10 +609,10 @@ public class BirthdayScheduleApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getScheduleAsync(@javax.annotation.Nonnull Long guildId, @javax.annotation.Nonnull Long userId, final ApiCallback<List<BirthdayScheduleDTO>> _callback) throws ApiException {
+    public okhttp3.Call getScheduleAsync(@javax.annotation.Nonnull Long guildId, @javax.annotation.Nonnull Long userId, final ApiCallback<BirthdayScheduleDTO> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getScheduleValidateBeforeCall(guildId, userId, _callback);
-        Type localVarReturnType = new TypeToken<List<BirthdayScheduleDTO>>(){}.getType();
+        Type localVarReturnType = new TypeToken<BirthdayScheduleDTO>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

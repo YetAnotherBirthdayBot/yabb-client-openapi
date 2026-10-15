@@ -231,10 +231,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: "#/components/schemas/BirthdayScheduleDTO"
-                type: array
-                default: null
+                $ref: "#/components/schemas/BirthdayScheduleDTO"
           description: Success
         "500":
           content:

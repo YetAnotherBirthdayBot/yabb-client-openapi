@@ -431,10 +431,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/BirthdayScheduleDTO"
-                  }
+                  "$ref" : "#/components/schemas/BirthdayScheduleDTO"
                 }
               }
             }

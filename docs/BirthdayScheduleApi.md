@@ -191,7 +191,7 @@ No authorization required
 
 <a id="getSchedule"></a>
 # **getSchedule**
-> List&lt;BirthdayScheduleDTO&gt; getSchedule(guildId, userId)
+> BirthdayScheduleDTO getSchedule(guildId, userId)
 
 Get birthday schedule for a particular guild and user
 
@@ -213,7 +213,7 @@ public class Example {
     Long guildId = 56L; // Long | 
     Long userId = 56L; // Long | 
     try {
-      List<BirthdayScheduleDTO> result = apiInstance.getSchedule(guildId, userId);
+      BirthdayScheduleDTO result = apiInstance.getSchedule(guildId, userId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BirthdayScheduleApi#getSchedule");
@@ -235,7 +235,7 @@ public class Example {
 
 ### Return type
 
-[**List&lt;BirthdayScheduleDTO&gt;**](BirthdayScheduleDTO.md)
+[**BirthdayScheduleDTO**](BirthdayScheduleDTO.md)
 
 ### Authorization
 
