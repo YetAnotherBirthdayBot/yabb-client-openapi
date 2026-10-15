@@ -76,6 +76,8 @@ public class BirthdayScheduleApi {
 
     /**
      * Build call for advance
+     * @param scheduleGuildId  (required)
+     * @param scheduleUserId  (required)
      * @param birthdayDTO  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -90,7 +92,7 @@ public class BirthdayScheduleApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call advanceCall(@javax.annotation.Nonnull BirthdayDTO birthdayDTO, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call advanceCall(@javax.annotation.Nonnull Long scheduleGuildId, @javax.annotation.Nonnull Long scheduleUserId, @javax.annotation.Nonnull BirthdayDTO birthdayDTO, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -107,7 +109,9 @@ public class BirthdayScheduleApi {
         Object localVarPostBody = birthdayDTO;
 
         // create path and map variables
-        String localVarPath = "/api/v1/birthday/schedule/advance";
+        String localVarPath = "/api/v1/birthday/schedule/advance/{scheduleGuildId}/{scheduleUserId}"
+            .replace("{" + "scheduleGuildId" + "}", localVarApiClient.escapeString(scheduleGuildId.toString()))
+            .replace("{" + "scheduleUserId" + "}", localVarApiClient.escapeString(scheduleUserId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -136,19 +140,31 @@ public class BirthdayScheduleApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call advanceValidateBeforeCall(@javax.annotation.Nonnull BirthdayDTO birthdayDTO, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call advanceValidateBeforeCall(@javax.annotation.Nonnull Long scheduleGuildId, @javax.annotation.Nonnull Long scheduleUserId, @javax.annotation.Nonnull BirthdayDTO birthdayDTO, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scheduleGuildId' is set
+        if (scheduleGuildId == null) {
+            throw new ApiException("Missing the required parameter 'scheduleGuildId' when calling advance(Async)");
+        }
+
+        // verify the required parameter 'scheduleUserId' is set
+        if (scheduleUserId == null) {
+            throw new ApiException("Missing the required parameter 'scheduleUserId' when calling advance(Async)");
+        }
+
         // verify the required parameter 'birthdayDTO' is set
         if (birthdayDTO == null) {
             throw new ApiException("Missing the required parameter 'birthdayDTO' when calling advance(Async)");
         }
 
-        return advanceCall(birthdayDTO, _callback);
+        return advanceCall(scheduleGuildId, scheduleUserId, birthdayDTO, _callback);
 
     }
 
     /**
      * Update schedule for next year
      * 
+     * @param scheduleGuildId  (required)
+     * @param scheduleUserId  (required)
      * @param birthdayDTO  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -161,13 +177,15 @@ public class BirthdayScheduleApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public void advance(@javax.annotation.Nonnull BirthdayDTO birthdayDTO) throws ApiException {
-        advanceWithHttpInfo(birthdayDTO);
+    public void advance(@javax.annotation.Nonnull Long scheduleGuildId, @javax.annotation.Nonnull Long scheduleUserId, @javax.annotation.Nonnull BirthdayDTO birthdayDTO) throws ApiException {
+        advanceWithHttpInfo(scheduleGuildId, scheduleUserId, birthdayDTO);
     }
 
     /**
      * Update schedule for next year
      * 
+     * @param scheduleGuildId  (required)
+     * @param scheduleUserId  (required)
      * @param birthdayDTO  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -181,14 +199,16 @@ public class BirthdayScheduleApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> advanceWithHttpInfo(@javax.annotation.Nonnull BirthdayDTO birthdayDTO) throws ApiException {
-        okhttp3.Call localVarCall = advanceValidateBeforeCall(birthdayDTO, null);
+    public ApiResponse<Void> advanceWithHttpInfo(@javax.annotation.Nonnull Long scheduleGuildId, @javax.annotation.Nonnull Long scheduleUserId, @javax.annotation.Nonnull BirthdayDTO birthdayDTO) throws ApiException {
+        okhttp3.Call localVarCall = advanceValidateBeforeCall(scheduleGuildId, scheduleUserId, birthdayDTO, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Update schedule for next year (asynchronously)
      * 
+     * @param scheduleGuildId  (required)
+     * @param scheduleUserId  (required)
      * @param birthdayDTO  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -203,9 +223,9 @@ public class BirthdayScheduleApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call advanceAsync(@javax.annotation.Nonnull BirthdayDTO birthdayDTO, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call advanceAsync(@javax.annotation.Nonnull Long scheduleGuildId, @javax.annotation.Nonnull Long scheduleUserId, @javax.annotation.Nonnull BirthdayDTO birthdayDTO, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = advanceValidateBeforeCall(birthdayDTO, _callback);
+        okhttp3.Call localVarCall = advanceValidateBeforeCall(scheduleGuildId, scheduleUserId, birthdayDTO, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

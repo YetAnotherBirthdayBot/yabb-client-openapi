@@ -104,9 +104,30 @@ paths:
       - Birthday Schedule
       x-accepts:
       - application/json
-  /api/v1/birthday/schedule/advance:
+  /api/v1/birthday/schedule/advance/{scheduleGuildId}/{scheduleUserId}:
     patch:
       operationId: advance
+      parameters:
+      - explode: false
+        in: path
+        name: scheduleGuildId
+        required: true
+        schema:
+          exclusiveMinimum: true
+          format: int64
+          minimum: 0
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: scheduleUserId
+        required: true
+        schema:
+          exclusiveMinimum: true
+          format: int64
+          minimum: 0
+          type: integer
+        style: simple
       requestBody:
         content:
           application/json:

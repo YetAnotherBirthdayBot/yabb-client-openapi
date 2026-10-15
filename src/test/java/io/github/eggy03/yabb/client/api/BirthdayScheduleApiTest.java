@@ -40,8 +40,10 @@ public class BirthdayScheduleApiTest {
      */
     @Test
     public void advanceTest() throws ApiException {
+        Long scheduleGuildId = null;
+        Long scheduleUserId = null;
         BirthdayDTO birthdayDTO = null;
-        api.advance(birthdayDTO);
+        api.advance(scheduleGuildId, scheduleUserId, birthdayDTO);
         // TODO: test validations
     }
 

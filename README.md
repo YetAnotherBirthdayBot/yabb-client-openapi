@@ -120,7 +120,7 @@ Class | Method | HTTP request | Description
 *BirthdayApi* | [**getBirthdays**](docs/BirthdayApi.md#getBirthdays) | **GET** /api/v1/birthday/{guildId} | Get Birthdays for a Guild
 *BirthdayApi* | [**saveBirthday**](docs/BirthdayApi.md#saveBirthday) | **POST** /api/v1/birthday | Save a Birthday
 *BirthdayApi* | [**updateBirthday**](docs/BirthdayApi.md#updateBirthday) | **PATCH** /api/v1/birthday | Update a Birthday
-*BirthdayScheduleApi* | [**advance**](docs/BirthdayScheduleApi.md#advance) | **PATCH** /api/v1/birthday/schedule/advance | Update schedule for next year
+*BirthdayScheduleApi* | [**advance**](docs/BirthdayScheduleApi.md#advance) | **PATCH** /api/v1/birthday/schedule/advance/{scheduleGuildId}/{scheduleUserId} | Update schedule for next year
 *BirthdayScheduleApi* | [**getActiveSchedules**](docs/BirthdayScheduleApi.md#getActiveSchedules) | **GET** /api/v1/birthday/schedule/active | Get a list of schedules overdue by at most 24 hours
 *BirthdayScheduleApi* | [**getExpiredSchedules**](docs/BirthdayScheduleApi.md#getExpiredSchedules) | **GET** /api/v1/birthday/schedule/expired | Get a list of schedules overdue by more than 24 hours
 *BirthdayScheduleApi* | [**getUpcomingSchedules**](docs/BirthdayScheduleApi.md#getUpcomingSchedules) | **GET** /api/v1/birthday/schedule/upcoming | Get a list of schedules due in the future

@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**advance**](BirthdayScheduleApi.md#advance) | **PATCH** /api/v1/birthday/schedule/advance | Update schedule for next year |
+| [**advance**](BirthdayScheduleApi.md#advance) | **PATCH** /api/v1/birthday/schedule/advance/{scheduleGuildId}/{scheduleUserId} | Update schedule for next year |
 | [**getActiveSchedules**](BirthdayScheduleApi.md#getActiveSchedules) | **GET** /api/v1/birthday/schedule/active | Get a list of schedules overdue by at most 24 hours |
 | [**getExpiredSchedules**](BirthdayScheduleApi.md#getExpiredSchedules) | **GET** /api/v1/birthday/schedule/expired | Get a list of schedules overdue by more than 24 hours |
 | [**getUpcomingSchedules**](BirthdayScheduleApi.md#getUpcomingSchedules) | **GET** /api/v1/birthday/schedule/upcoming | Get a list of schedules due in the future |
@@ -12,7 +12,7 @@ All URIs are relative to *http://localhost*
 
 <a id="advance"></a>
 # **advance**
-> advance(birthdayDTO)
+> advance(scheduleGuildId, scheduleUserId, birthdayDTO)
 
 Update schedule for next year
 
@@ -31,9 +31,11 @@ public class Example {
     defaultClient.setBasePath("http://localhost");
 
     BirthdayScheduleApi apiInstance = new BirthdayScheduleApi(defaultClient);
+    Long scheduleGuildId = 56L; // Long | 
+    Long scheduleUserId = 56L; // Long | 
     BirthdayDTO birthdayDTO = new BirthdayDTO(); // BirthdayDTO | 
     try {
-      apiInstance.advance(birthdayDTO);
+      apiInstance.advance(scheduleGuildId, scheduleUserId, birthdayDTO);
     } catch (ApiException e) {
       System.err.println("Exception when calling BirthdayScheduleApi#advance");
       System.err.println("Status code: " + e.getCode());
@@ -49,6 +51,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **scheduleGuildId** | **Long**|  | |
+| **scheduleUserId** | **Long**|  | |
 | **birthdayDTO** | [**BirthdayDTO**](BirthdayDTO.md)|  | |
 
 ### Return type
