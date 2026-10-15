@@ -31,6 +31,14 @@
         </developer>
     </developers>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/YetAnotherBirthdayBot/yabb-client-openapi</url>
+        </repository>
+    </distributionManagement>
+
     <build>
         <plugins>
            <plugin>
@@ -238,7 +246,7 @@
             <id>sign-artifacts</id>
             <build>
                 <plugins>
-                    <!-- Sign artifacts for Maven Central -->
+                    <!-- Sign artifacts -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
@@ -257,17 +265,6 @@
                         </executions>
                     </plugin>
 
-                    <!-- Publish to Maven Central -->
-                    <plugin>
-                        <groupId>org.sonatype.central</groupId>
-                        <artifactId>central-publishing-maven-plugin</artifactId>
-                        <version>${central.publishing.maven.plugin.version}</version>
-                        <extensions>true</extensions>
-                        <configuration>
-                            <publishingServerId>central</publishingServerId>
-                            <checksums>all</checksums>
-                        </configuration>
-                    </plugin>
                 </plugins>
             </build>
         </profile>
@@ -352,6 +349,5 @@
         <jsr311-api-version>1.1.1</jsr311-api-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spotless.version>2.43.0</spotless.version>
-        <central.publishing.maven.plugin.version>0.11.0</central.publishing.maven.plugin.version>
     </properties>
 </project>
