@@ -1,13 +1,13 @@
 openapi: 3.1.0
 info:
-  title: yabb-api API
-  version: 1.0.0-SNAPSHOT
+  title: Yabb API
+  version: 1.0.0
 servers:
 - url: /
 tags:
 - name: Birthday
 - name: Birthday Schedule
-- name: Guild
+- name: Config
 paths:
   /api/v1/birthday:
     patch:
@@ -424,16 +424,16 @@ paths:
       - Birthday
       x-accepts:
       - application/json
-  /api/v1/guild:
+  /api/v1/config:
     get:
-      operationId: getAllGuilds
+      operationId: getAllConfigs
       responses:
         "200":
           content:
             application/json:
               schema:
                 items:
-                  $ref: "#/components/schemas/GuildDTO"
+                  $ref: "#/components/schemas/ConfigDTO"
                 type: array
                 default: null
           description: Success
@@ -443,18 +443,18 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
           description: Internal Server Error
-      summary: Get All Guilds
+      summary: Get All Configs
       tags:
-      - Guild
+      - Config
       x-accepts:
       - application/json
     patch:
-      operationId: updateGuild
+      operationId: updateConfig
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/GuildDTO"
+              $ref: "#/components/schemas/ConfigDTO"
         required: true
       responses:
         "204":
@@ -470,26 +470,26 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-          description: Guild not found
+          description: Config not found
         "500":
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
           description: Internal Server Error
-      summary: Update a Guild
+      summary: Update a Config
       tags:
-      - Guild
+      - Config
       x-content-type: application/json
       x-accepts:
       - application/json
     post:
-      operationId: saveGuild
+      operationId: saveConfig
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/GuildDTO"
+              $ref: "#/components/schemas/ConfigDTO"
         required: true
       responses:
         "201":
@@ -512,15 +512,15 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
           description: Internal Server Error
-      summary: Save a Guild
+      summary: Save a Config
       tags:
-      - Guild
+      - Config
       x-content-type: application/json
       x-accepts:
       - application/json
-  /api/v1/guild/{guildId}:
+  /api/v1/config/{guildId}:
     delete:
-      operationId: deleteGuild
+      operationId: deleteConfig
       parameters:
       - explode: false
         in: path
@@ -546,20 +546,20 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-          description: Guild not found
+          description: Config not found
         "500":
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
           description: Internal Server Error
-      summary: Delete a Guild
+      summary: Delete a Config
       tags:
-      - Guild
+      - Config
       x-accepts:
       - application/json
     get:
-      operationId: getGuild
+      operationId: getConfig
       parameters:
       - explode: false
         in: path
@@ -576,7 +576,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GuildDTO"
+                $ref: "#/components/schemas/ConfigDTO"
           description: Success
         "400":
           content:
@@ -589,16 +589,16 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-          description: Guild not found
+          description: Config not found
         "500":
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
           description: Internal Server Error
-      summary: Get a Guild
+      summary: Get a saved Config
       tags:
-      - Guild
+      - Config
       x-accepts:
       - application/json
 components:
@@ -666,6 +666,33 @@ components:
       - guildId
       - upcomingBirthdayAt
       - userId
+    ConfigDTO:
+      example:
+        guildId: 0
+        channelId: 0
+        roleId: 0
+      properties:
+        guildId:
+          description: Discord guild/server ID
+          exclusiveMinimum: true
+          format: int64
+          minimum: 0
+          type: integer
+        channelId:
+          description: Discord channel ID where birthday notifications are sent
+          exclusiveMinimum: true
+          format: int64
+          minimum: 0
+          type: integer
+        roleId:
+          description: Discord role ID to ping when birthday notifications are sent
+          exclusiveMinimum: true
+          format: int64
+          minimum: 0
+          type: integer
+      required:
+      - channelId
+      - guildId
     ErrorResponse:
       description: Standard API error response
       example:
@@ -698,33 +725,6 @@ components:
       - path
       - status
       - timeStamp
-    GuildDTO:
-      example:
-        guildId: 0
-        channelId: 0
-        roleId: 0
-      properties:
-        guildId:
-          description: Discord guild/server ID
-          exclusiveMinimum: true
-          format: int64
-          minimum: 0
-          type: integer
-        channelId:
-          description: Discord channel ID where birthday notifications are sent
-          exclusiveMinimum: true
-          format: int64
-          minimum: 0
-          type: integer
-        roleId:
-          description: Discord role ID to ping when birthday notifications are sent
-          exclusiveMinimum: true
-          format: int64
-          minimum: 0
-          type: integer
-      required:
-      - channelId
-      - guildId
     Instant:
       format: date-time
       type: string

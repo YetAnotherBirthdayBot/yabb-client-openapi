@@ -1,6 +1,6 @@
 
 
-# GuildDTO
+# ConfigDTO
 
 
 ## Properties

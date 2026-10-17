@@ -1,21 +1,21 @@
-# GuildApi
+# ConfigApi
 
 All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteGuild**](GuildApi.md#deleteGuild) | **DELETE** /api/v1/guild/{guildId} | Delete a Guild |
-| [**getAllGuilds**](GuildApi.md#getAllGuilds) | **GET** /api/v1/guild | Get All Guilds |
-| [**getGuild**](GuildApi.md#getGuild) | **GET** /api/v1/guild/{guildId} | Get a Guild |
-| [**saveGuild**](GuildApi.md#saveGuild) | **POST** /api/v1/guild | Save a Guild |
-| [**updateGuild**](GuildApi.md#updateGuild) | **PATCH** /api/v1/guild | Update a Guild |
+| [**deleteConfig**](ConfigApi.md#deleteConfig) | **DELETE** /api/v1/config/{guildId} | Delete a Config |
+| [**getAllConfigs**](ConfigApi.md#getAllConfigs) | **GET** /api/v1/config | Get All Configs |
+| [**getConfig**](ConfigApi.md#getConfig) | **GET** /api/v1/config/{guildId} | Get a saved Config |
+| [**saveConfig**](ConfigApi.md#saveConfig) | **POST** /api/v1/config | Save a Config |
+| [**updateConfig**](ConfigApi.md#updateConfig) | **PATCH** /api/v1/config | Update a Config |
 
 
-<a id="deleteGuild"></a>
-# **deleteGuild**
-> deleteGuild(guildId)
+<a id="deleteConfig"></a>
+# **deleteConfig**
+> deleteConfig(guildId)
 
-Delete a Guild
+Delete a Config
 
 ### Example
 ```java
@@ -24,19 +24,19 @@ import io.github.eggy03.yabb.client.ApiClient;
 import io.github.eggy03.yabb.client.ApiException;
 import io.github.eggy03.yabb.client.Configuration;
 import io.github.eggy03.yabb.client.models.*;
-import io.github.eggy03.yabb.client.api.GuildApi;
+import io.github.eggy03.yabb.client.api.ConfigApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("http://localhost");
 
-    GuildApi apiInstance = new GuildApi(defaultClient);
+    ConfigApi apiInstance = new ConfigApi(defaultClient);
     Long guildId = 56L; // Long | 
     try {
-      apiInstance.deleteGuild(guildId);
+      apiInstance.deleteConfig(guildId);
     } catch (ApiException e) {
-      System.err.println("Exception when calling GuildApi#deleteGuild");
+      System.err.println("Exception when calling ConfigApi#deleteConfig");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -70,14 +70,14 @@ No authorization required
 |-------------|-------------|------------------|
 | **204** | Success |  -  |
 | **400** | Validation Errors |  -  |
-| **404** | Guild not found |  -  |
+| **404** | Config not found |  -  |
 | **500** | Internal Server Error |  -  |
 
-<a id="getAllGuilds"></a>
-# **getAllGuilds**
-> List&lt;GuildDTO&gt; getAllGuilds()
+<a id="getAllConfigs"></a>
+# **getAllConfigs**
+> List&lt;ConfigDTO&gt; getAllConfigs()
 
-Get All Guilds
+Get All Configs
 
 ### Example
 ```java
@@ -86,19 +86,19 @@ import io.github.eggy03.yabb.client.ApiClient;
 import io.github.eggy03.yabb.client.ApiException;
 import io.github.eggy03.yabb.client.Configuration;
 import io.github.eggy03.yabb.client.models.*;
-import io.github.eggy03.yabb.client.api.GuildApi;
+import io.github.eggy03.yabb.client.api.ConfigApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("http://localhost");
 
-    GuildApi apiInstance = new GuildApi(defaultClient);
+    ConfigApi apiInstance = new ConfigApi(defaultClient);
     try {
-      List<GuildDTO> result = apiInstance.getAllGuilds();
+      List<ConfigDTO> result = apiInstance.getAllConfigs();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling GuildApi#getAllGuilds");
+      System.err.println("Exception when calling ConfigApi#getAllConfigs");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -113,7 +113,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List&lt;GuildDTO&gt;**](GuildDTO.md)
+[**List&lt;ConfigDTO&gt;**](ConfigDTO.md)
 
 ### Authorization
 
@@ -130,11 +130,11 @@ No authorization required
 | **200** | Success |  -  |
 | **500** | Internal Server Error |  -  |
 
-<a id="getGuild"></a>
-# **getGuild**
-> GuildDTO getGuild(guildId)
+<a id="getConfig"></a>
+# **getConfig**
+> ConfigDTO getConfig(guildId)
 
-Get a Guild
+Get a saved Config
 
 ### Example
 ```java
@@ -143,20 +143,20 @@ import io.github.eggy03.yabb.client.ApiClient;
 import io.github.eggy03.yabb.client.ApiException;
 import io.github.eggy03.yabb.client.Configuration;
 import io.github.eggy03.yabb.client.models.*;
-import io.github.eggy03.yabb.client.api.GuildApi;
+import io.github.eggy03.yabb.client.api.ConfigApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("http://localhost");
 
-    GuildApi apiInstance = new GuildApi(defaultClient);
+    ConfigApi apiInstance = new ConfigApi(defaultClient);
     Long guildId = 56L; // Long | 
     try {
-      GuildDTO result = apiInstance.getGuild(guildId);
+      ConfigDTO result = apiInstance.getConfig(guildId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling GuildApi#getGuild");
+      System.err.println("Exception when calling ConfigApi#getConfig");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -174,7 +174,7 @@ public class Example {
 
 ### Return type
 
-[**GuildDTO**](GuildDTO.md)
+[**ConfigDTO**](ConfigDTO.md)
 
 ### Authorization
 
@@ -190,14 +190,14 @@ No authorization required
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
 | **400** | Validation Errors |  -  |
-| **404** | Guild not found |  -  |
+| **404** | Config not found |  -  |
 | **500** | Internal Server Error |  -  |
 
-<a id="saveGuild"></a>
-# **saveGuild**
-> saveGuild(guildDTO)
+<a id="saveConfig"></a>
+# **saveConfig**
+> saveConfig(configDTO)
 
-Save a Guild
+Save a Config
 
 ### Example
 ```java
@@ -206,19 +206,19 @@ import io.github.eggy03.yabb.client.ApiClient;
 import io.github.eggy03.yabb.client.ApiException;
 import io.github.eggy03.yabb.client.Configuration;
 import io.github.eggy03.yabb.client.models.*;
-import io.github.eggy03.yabb.client.api.GuildApi;
+import io.github.eggy03.yabb.client.api.ConfigApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("http://localhost");
 
-    GuildApi apiInstance = new GuildApi(defaultClient);
-    GuildDTO guildDTO = new GuildDTO(); // GuildDTO | 
+    ConfigApi apiInstance = new ConfigApi(defaultClient);
+    ConfigDTO configDTO = new ConfigDTO(); // ConfigDTO | 
     try {
-      apiInstance.saveGuild(guildDTO);
+      apiInstance.saveConfig(configDTO);
     } catch (ApiException e) {
-      System.err.println("Exception when calling GuildApi#saveGuild");
+      System.err.println("Exception when calling ConfigApi#saveConfig");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -232,7 +232,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **guildDTO** | [**GuildDTO**](GuildDTO.md)|  | |
+| **configDTO** | [**ConfigDTO**](ConfigDTO.md)|  | |
 
 ### Return type
 
@@ -255,11 +255,11 @@ No authorization required
 | **409** | Constraint Violation Errors |  -  |
 | **500** | Internal Server Error |  -  |
 
-<a id="updateGuild"></a>
-# **updateGuild**
-> updateGuild(guildDTO)
+<a id="updateConfig"></a>
+# **updateConfig**
+> updateConfig(configDTO)
 
-Update a Guild
+Update a Config
 
 ### Example
 ```java
@@ -268,19 +268,19 @@ import io.github.eggy03.yabb.client.ApiClient;
 import io.github.eggy03.yabb.client.ApiException;
 import io.github.eggy03.yabb.client.Configuration;
 import io.github.eggy03.yabb.client.models.*;
-import io.github.eggy03.yabb.client.api.GuildApi;
+import io.github.eggy03.yabb.client.api.ConfigApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("http://localhost");
 
-    GuildApi apiInstance = new GuildApi(defaultClient);
-    GuildDTO guildDTO = new GuildDTO(); // GuildDTO | 
+    ConfigApi apiInstance = new ConfigApi(defaultClient);
+    ConfigDTO configDTO = new ConfigDTO(); // ConfigDTO | 
     try {
-      apiInstance.updateGuild(guildDTO);
+      apiInstance.updateConfig(configDTO);
     } catch (ApiException e) {
-      System.err.println("Exception when calling GuildApi#updateGuild");
+      System.err.println("Exception when calling ConfigApi#updateConfig");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -294,7 +294,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **guildDTO** | [**GuildDTO**](GuildDTO.md)|  | |
+| **configDTO** | [**ConfigDTO**](ConfigDTO.md)|  | |
 
 ### Return type
 
@@ -314,6 +314,6 @@ No authorization required
 |-------------|-------------|------------------|
 | **204** | Success |  -  |
 | **400** | Validation Errors |  -  |
-| **404** | Guild not found |  -  |
+| **404** | Config not found |  -  |
 | **500** | Internal Server Error |  -  |
 

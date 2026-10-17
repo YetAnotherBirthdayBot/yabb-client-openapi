@@ -13,7 +13,7 @@ on:
 
 jobs:
   build:
-    name: Build yabb-api API
+    name: Build Yabb API
     runs-on: ubuntu-latest
     strategy:
       matrix:
