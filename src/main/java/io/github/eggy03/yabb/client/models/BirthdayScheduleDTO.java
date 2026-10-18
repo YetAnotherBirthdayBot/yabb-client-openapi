@@ -20,7 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.OffsetDateTime;
+import java.time.Instant;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -65,7 +65,7 @@ public class BirthdayScheduleDTO {
   public static final String SERIALIZED_NAME_UPCOMING_BIRTHDAY_AT = "upcomingBirthdayAt";
   @SerializedName(SERIALIZED_NAME_UPCOMING_BIRTHDAY_AT)
   @javax.annotation.Nonnull
-  private OffsetDateTime upcomingBirthdayAt;
+  private Instant upcomingBirthdayAt;
 
   public BirthdayScheduleDTO() {
   }
@@ -110,7 +110,7 @@ public class BirthdayScheduleDTO {
   }
 
 
-  public BirthdayScheduleDTO upcomingBirthdayAt(@javax.annotation.Nonnull OffsetDateTime upcomingBirthdayAt) {
+  public BirthdayScheduleDTO upcomingBirthdayAt(@javax.annotation.Nonnull Instant upcomingBirthdayAt) {
     this.upcomingBirthdayAt = upcomingBirthdayAt;
     return this;
   }
@@ -120,11 +120,11 @@ public class BirthdayScheduleDTO {
    * @return upcomingBirthdayAt
    */
   @javax.annotation.Nonnull
-  public OffsetDateTime getUpcomingBirthdayAt() {
+  public Instant getUpcomingBirthdayAt() {
     return upcomingBirthdayAt;
   }
 
-  public void setUpcomingBirthdayAt(@javax.annotation.Nonnull OffsetDateTime upcomingBirthdayAt) {
+  public void setUpcomingBirthdayAt(@javax.annotation.Nonnull Instant upcomingBirthdayAt) {
     this.upcomingBirthdayAt = upcomingBirthdayAt;
   }
 

@@ -11,7 +11,7 @@ Standard API error response
 |**status** | **Integer** |  |  [readonly] |
 |**error** | **String** |  |  [readonly] |
 |**message** | **String** |  |  [readonly] |
-|**timeStamp** | **OffsetDateTime** |  |  [readonly] |
+|**timeStamp** | **Instant** |  |  [readonly] |
 |**path** | **String** |  |  [readonly] |
 
 

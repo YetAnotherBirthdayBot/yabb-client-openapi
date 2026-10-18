@@ -20,7 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.OffsetDateTime;
+import java.time.Instant;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -70,7 +70,7 @@ public class ErrorResponse {
   public static final String SERIALIZED_NAME_TIME_STAMP = "timeStamp";
   @SerializedName(SERIALIZED_NAME_TIME_STAMP)
   @javax.annotation.Nonnull
-  private OffsetDateTime timeStamp;
+  private Instant timeStamp;
 
   public static final String SERIALIZED_NAME_PATH = "path";
   @SerializedName(SERIALIZED_NAME_PATH)
@@ -84,7 +84,7 @@ public class ErrorResponse {
      Integer status, 
      String error, 
      String message, 
-     OffsetDateTime timeStamp, 
+     Instant timeStamp, 
      String path
   ) {
     this();
@@ -133,7 +133,7 @@ public class ErrorResponse {
    * @return timeStamp
    */
   @javax.annotation.Nonnull
-  public OffsetDateTime getTimeStamp() {
+  public Instant getTimeStamp() {
     return timeStamp;
   }
 
