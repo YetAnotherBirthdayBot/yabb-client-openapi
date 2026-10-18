@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Yabb API
-  version: 1.0.0
+  version: 1.0.1
 servers:
 - url: /
 tags:
@@ -714,7 +714,7 @@ components:
           type: string
         timeStamp:
           allOf:
-          - $ref: "#/components/schemas/OffsetDateTime"
+          - $ref: "#/components/schemas/Instant"
           readOnly: true
         path:
           readOnly: true
@@ -726,9 +726,6 @@ components:
       - status
       - timeStamp
     Instant:
-      format: date-time
-      type: string
-    OffsetDateTime:
       format: date-time
       type: string
 
