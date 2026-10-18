@@ -20,7 +20,42 @@ openapi-generator-cli generate `
   --api-package io.github.eggy03.yabb.client.api `
   --model-package io.github.eggy03.yabb.client.models `
   --invoker-package io.github.eggy03.yabb.client `
-  --type-mappings DateTime=Instant `
-  --import-mappings Instant=java.time.Instant `
-  --additional-properties=errorObjectType=io.github.eggy03.yabb.client.models.ErrorResponse,hideGenerationTimestamp=true,java8=true
+  --type-mappings OffsetDateTime=Instant `
+  --import-mappings java.time.OffsetDateTime=java.time.Instant `
+  --additional-properties=errorObjectType=io.github.eggy03.yabb.client.models.ErrorResponse,hideGenerationTimestamp=true,java8=true,dateLibrary=java8
 ````
+Add this to generated JSON.java to allow GSON to parse Instant strings
+IDK BUT USING THE GENERATED MUSTACHE CAUSES STATIC GSON COMPILATION ERRORS
+```java
+/**
+ * Gson TypeAdapter for java.time.Instant.
+ */
+public static class InstantTypeAdapter extends TypeAdapter<Instant> {
+
+    @Override
+    public void write(JsonWriter out, Instant instant) throws IOException {
+        if (instant == null) {
+            out.nullValue();
+        } else {
+            out.value(instant.toString());
+        }
+    }
+
+    @Override
+    public Instant read(JsonReader in) throws IOException {
+        switch (in.peek()) {
+            case NULL:
+                in.nextNull();
+                return null;
+            default:
+                return Instant.parse(in.nextString());
+        }
+    }
+}
+```
+
+```java
+private static InstantTypeAdapter instantTypeAdapter = new InstantTypeAdapter();
+// gsonBuilder.registerTypeAdapter(Instant.class, instantTypeAdapter);
+```
+

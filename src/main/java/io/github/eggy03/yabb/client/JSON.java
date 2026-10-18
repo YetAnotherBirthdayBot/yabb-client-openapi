@@ -35,6 +35,7 @@ import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.ParsePosition;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
@@ -56,6 +57,7 @@ public class JSON {
     private static boolean isLenientOnJson = false;
     private static DateTypeAdapter dateTypeAdapter = new DateTypeAdapter();
     private static SqlDateTypeAdapter sqlDateTypeAdapter = new SqlDateTypeAdapter();
+    private static InstantTypeAdapter instantTypeAdapter = new InstantTypeAdapter();
     private static OffsetDateTimeTypeAdapter offsetDateTimeTypeAdapter = new OffsetDateTimeTypeAdapter();
     private static LocalDateTypeAdapter localDateTypeAdapter = new LocalDateTypeAdapter();
     private static LocalDateTimeTypeAdapter localDateTimeTypeAdapter = new LocalDateTimeTypeAdapter();
@@ -96,6 +98,7 @@ public class JSON {
         GsonBuilder gsonBuilder = createGson();
         gsonBuilder.registerTypeAdapter(Date.class, dateTypeAdapter);
         gsonBuilder.registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter);
+        gsonBuilder.registerTypeAdapter(Instant.class, instantTypeAdapter);
         gsonBuilder.registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter);
         gsonBuilder.registerTypeAdapter(LocalDate.class, localDateTypeAdapter);
         gsonBuilder.registerTypeAdapter(LocalDateTime.class, localDateTimeTypeAdapter);
@@ -215,6 +218,32 @@ public class JSON {
                     String bytesAsBase64 = in.nextString();
                     ByteString byteString = ByteString.decodeBase64(bytesAsBase64);
                     return byteString.toByteArray();
+            }
+        }
+    }
+
+    /**
+     * Gson TypeAdapter for java.time.Instant.
+     */
+    public static class InstantTypeAdapter extends TypeAdapter<Instant> {
+
+        @Override
+        public void write(JsonWriter out, Instant instant) throws IOException {
+            if (instant == null) {
+                out.nullValue();
+            } else {
+                out.value(instant.toString());
+            }
+        }
+
+        @Override
+        public Instant read(JsonReader in) throws IOException {
+            switch (in.peek()) {
+                case NULL:
+                    in.nextNull();
+                    return null;
+                default:
+                    return Instant.parse(in.nextString());
             }
         }
     }
