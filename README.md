@@ -1,5 +1,8 @@
 # openapi-java-client
 
+>[!NOTE]
+> Since the bot uses Quarkus too, I've decided to use Quarkus Rest Client within the bot, which means I don't really need this client anymore. I'll still keep this around so that I can refer to it when I need to generate clients for other projects not using Quarkus.
+
 Yabb API
 - API version: 1.0.1
   - Generator version: 7.26.0
